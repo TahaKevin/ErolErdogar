@@ -57,10 +57,7 @@ var SITE = {
    */
   discoverStrip: {
     enabled: true,
-    backgroundImages: [
-      "C:/Users/yenih/.cursor/projects/c-Users-yenih-Projects-my-site/assets/c__Users_yenih_AppData_Roaming_Cursor_User_workspaceStorage_dbd6b88c7acc8b454155f9b859791468_images_WhatsApp_Image_2026-04-30_at_7.20.24_PM-71994f63-8b35-492d-85a9-2847cedd4190.png",
-      "assets/intro-bg.png",
-    ],
+    backgroundImages: ["assets/discover-strip-bg-1.png", "assets/intro-bg.png"],
     slideIntervalMs: 8000,
     peekHeightCss: "clamp(6.75rem, 21vh, 11rem)",
     dockTallMinCss: "min(58vh, 32rem)",

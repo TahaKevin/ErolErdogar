@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="İlan detayı — Erol Erdoğar, TURYAP ATAŞEHİR İMZA." />
+  <title>İlan detayı | Erol Erdoğar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#icerik">İçeriğe geç</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="index.html"><span class="logo-brand"><img src="assets/logo2.png" alt="TURYAP" class="logo-img" /><span class="logo-branch">ATAŞEHİR İMZA</span></span><span class="logo-name">Erol Erdoğar</span></a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menüyü aç"><span class="nav-toggle-bar"></span></button>
+      <nav id="site-nav" class="site-nav" aria-label="Ana menü">
+        <ul>
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="ilanlar.html">İlanlarım</a></li>
+          <li><a href="hakkimda.html">Hakkımda</a></li>
+          <li><a href="iletisim.html" class="nav-cta">İletişim</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="icerik">
+    <header class="page-hero page-hero--detail">
+      <div class="wrap">
+        <p class="detail-back"><a href="ilanlar.html" class="detail-back-link">← İlanlara dön</a></p>
+      </div>
+    </header>
+
+    <section class="section section--tight">
+      <div class="wrap listing-full-width" id="ilan-detay-root"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap footer-inner"><p>© <span id="yil"></span> Erol Erdoğar · TURYAP ATAŞEHİR İMZA Gayrimenkul danışmanı</p></div></footer>
+
+  <div id="listing-lightbox" class="listing-lightbox" role="dialog" aria-modal="true" aria-label="Fotoğraf büyütülmüş görünüm" hidden>
+    <button type="button" class="listing-lightbox-close" aria-label="Kapat">&times;</button>
+    <button type="button" class="listing-lightbox-nav listing-lightbox-prev" aria-label="Önceki fotoğraf"></button>
+    <div class="listing-lightbox-stack">
+      <img class="listing-lightbox-img" src="" alt="" />
+      <p class="listing-lightbox-counter" aria-live="polite"></p>
+    </div>
+    <button type="button" class="listing-lightbox-nav listing-lightbox-next" aria-label="Sonraki fotoğraf"></button>
+  </div>
+
+  <div class="contact-fab" data-contact-fab>
+    <div class="contact-fab-panel" id="contact-fab-panel" role="group" aria-label="Hızlı iletişim"></div>
+    <div class="contact-fab-toggle-wrap">
+      <span class="contact-fab-pulse" aria-hidden="true"></span>
+      <button type="button" class="contact-fab-toggle" aria-expanded="false" aria-controls="contact-fab-panel" aria-label="İletişim menüsünü aç">
+        <span class="contact-fab-toggle-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+  <script src="site-config.js"></script>
+  <script src="ilanlar-data.js"></script>
+  <script src="ilanlar.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

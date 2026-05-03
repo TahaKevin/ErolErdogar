@@ -1,0 +1,2 @@
+Bu klasöre ilan fotoğraflarınızı koyun. Örnek dosya adı: daire-a-salon.jpg
+ilanlar-data.js içinde "photos" dizisine şunu yazın: "assets/ilan-fotograflari/daire-a-salon.jpg"

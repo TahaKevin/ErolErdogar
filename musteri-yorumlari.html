@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="İlan detayı — Erol Erdoğar, TURYAP ATAŞEHİR İMZA." />
-  <title>İlan detayı | Erol Erdoğar</title>
+  <meta name="description" content="Müşteri görüşleri ve ekran görüntüleri — Erol Erdoğar, TURYAP ATAŞEHİR İMZA." />
+  <title>Müşteri görüşleri | Erol Erdoğar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
@@ -38,16 +38,26 @@
   <main id="icerik">
     <header class="page-hero page-hero--detail">
       <div class="wrap">
-        <p class="detail-back"><a href="ilanlar.html" class="detail-back-link" data-i18n-text="detail_back">← İlanlara dön</a></p>
+        <p class="detail-back"><a href="index.html" class="detail-back-link" data-i18n-text="reviews_back_home">← Ana sayfaya dön</a></p>
+        <div class="page-hero-head">
+          <div class="page-hero-heading">
+            <h1 data-i18n-text="reviews_page_h1">Müşteri görüşleri</h1>
+            <p class="page-hero-lead" data-i18n-text="reviews_page_lead">Görselleri büyütebilir, oklar veya kaydırma ile aralarında gezebilirsiniz.</p>
+          </div>
+        </div>
       </div>
     </header>
 
-    <section class="section section--tight">
-      <div class="wrap listing-full-width" id="ilan-detay-root"></div>
+    <section class="section section--tight reviews-page-section">
+      <div class="wrap listing-full-width" id="reviews-gallery-root" aria-live="polite"></div>
     </section>
   </main>
 
-  <footer class="site-footer"><div class="wrap footer-inner"><p>© <span id="yil"></span> <span class="js-advisor-name">Erol Erdoğar</span><span data-i18n-text="footer_role"> · TURYAP ATAŞEHİR İMZA Gayrimenkul danışmanı</span></p></div></footer>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© <span id="yil"></span> <span class="js-advisor-name">Erol Erdoğar</span><span data-i18n-text="footer_role"> · TURYAP ATAŞEHİR İMZA Gayrimenkul danışmanı</span></p>
+    </div>
+  </footer>
 
   <div id="listing-lightbox" class="listing-lightbox" role="dialog" aria-modal="true" data-i18n-attr="aria-label:lightbox_photo_label" aria-label="Fotoğraf büyütülmüş görünüm" hidden>
     <button type="button" class="listing-lightbox-close" aria-label="Kapat" data-i18n-attr="aria-label:close">&times;</button>
@@ -68,11 +78,11 @@
       </button>
     </div>
   </div>
+
   <script src="site-config.js"></script>
-  <script src="ilanlar-data.js"></script>
-  <script src="ilanlar-en.js"></script>
+  <script src="musteri-yorumlari-data.js"></script>
   <script src="i18n.js"></script>
-  <script src="ilanlar.js"></script>
+  <script src="musteri-yorumlari.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

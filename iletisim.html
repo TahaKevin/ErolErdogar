@@ -15,48 +15,57 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="logo" href="index.html"><span class="logo-brand"><img src="assets/logo2.png" alt="TURYAP" class="logo-img" /><span class="logo-branch">ATAŞEHİR İMZA</span></span><span class="logo-name">Erol Erdoğar</span></a>
-      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menüyü aç"><span class="nav-toggle-bar"></span></button>
-      <nav id="site-nav" class="site-nav" aria-label="Ana menü">
-        <ul>
-          <li><a href="index.html">Ana Sayfa</a></li>
-          <li><a href="ilanlar.html">İlanlarım</a></li>
-          <li><a href="hakkimda.html">Hakkımda</a></li>
-          <li><a href="iletisim.html" class="nav-cta" aria-current="page">İletişim</a></li>
-        </ul>
-      </nav>
+      <div class="header-actions">
+        <nav id="site-nav" class="site-nav" aria-label="Ana menü">
+          <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="ilanlar.html">İlanlarım</a></li>
+            <li><a href="hakkimda.html">Hakkımda</a></li>
+            <li class="site-nav-cta-lang">
+              <a href="iletisim.html" class="nav-cta" aria-current="page">İletişim</a>
+              <div class="lang-switch-host lang-switch-host--after-cta" data-lang-host aria-hidden="false"></div>
+            </li>
+          </ul>
+        </nav>
+        <div class="header-end">
+          <div class="lang-switch-host lang-switch-host--toolbar" data-lang-host aria-hidden="false"></div>
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menüyü aç"><span class="nav-toggle-bar"></span></button>
+        </div>
+      </div>
     </div>
   </header>
 
   <main id="icerik" class="bubble">
-    <header class="page-hero"><div class="wrap narrow"><h1>İletişim</h1><p class="page-hero-lead">Telefon, WhatsApp veya e-posta ile ulaşın.</p></div></header>
+    <header class="page-hero"><div class="wrap narrow"><h1 data-i18n-text="contact_page_h1">İletişim</h1><p class="page-hero-lead" data-i18n-text="contact_page_lead">Telefon, WhatsApp veya e-posta ile ulaşın.</p></div></header>
     <section class="section section--tight">
       <div class="wrap">
         <div class="contact-grid">
-          <div class="contact-card"><h2>Telefon</h2><p><a class="contact-big js-tel" href="#">+90 532 566 28 38</a></p></div>
-          <div class="contact-card"><h2>WhatsApp</h2><p><a class="btn btn-wa js-wa" href="#">WhatsApp ile mesaj gönder</a></p></div>
+          <div class="contact-card"><h2 data-i18n-text="contact_phone">Telefon</h2><p><a class="contact-big js-tel" href="#">+90 532 566 28 38</a></p></div>
+          <div class="contact-card"><h2>WhatsApp</h2><p><a class="btn btn-wa js-wa" href="#" data-i18n-text="contact_wa_btn">WhatsApp ile mesaj gönder</a></p></div>
           <div class="contact-card">
             <h2 class="ig-title">
               <span class="ig-icon" aria-hidden="true"></span>
               <span class="js-ig-username">@kullaniciadi</span>
             </h2>
-            <p><a class="btn btn-ig js-ig-link" href="#" target="_blank" rel="noopener noreferrer">Instagram'a git</a></p>
+            <p><a class="btn btn-ig js-ig-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n-text="contact_ig_go">Instagram'a git</a></p>
           </div>
           <div class="contact-card js-sb-card" hidden>
             <h2 class="sb-title">
               <span class="sb-icon" aria-hidden="true"></span>
-              Sahibinden
+              <span data-i18n-text="contact_sb_h">Sahibinden</span>
             </h2>
-            <p><a class="btn btn-sb js-sb-link" href="#" target="_blank" rel="noopener noreferrer">Sahibinden'de görüntüle</a></p>
+            <p><a class="btn btn-sb js-sb-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n-text="contact_sb_go">Sahibinden'de görüntüle</a></p>
           </div>
-          <div class="contact-card"><h2>E-posta</h2><p><a class="contact-big js-mailto" href="#">erolerdogar@gmail.com</a></p></div>
+          <div class="contact-card"><h2 data-i18n-text="contact_email">E-posta</h2><p><a class="contact-big js-mailto" href="#">erolerdogar@gmail.com</a></p></div>
         </div>
         <div class="map-wrap contact-map js-map-wrap">
-          <h2 class="contact-map-heading">Konum</h2>
+          <h2 class="contact-map-heading" data-i18n-text="contact_map_h">Konum</h2>
           <p class="contact-map-address js-map-address" hidden></p>
           <div class="map-embed" style="display: none">
             <iframe
               class="js-map-frame"
               title="Ofis konumu — harita"
+              data-i18n-attr="title:contact_map_iframe_title"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               allowfullscreen
@@ -68,17 +77,18 @@
     </section>
   </main>
 
-  <footer class="site-footer"><div class="wrap footer-inner"><p>© <span id="yil"></span> Erol Erdoğar · TURYAP ATAŞEHİR İMZA Gayrimenkul danışmanı</p></div></footer>
+  <footer class="site-footer"><div class="wrap footer-inner"><p>© <span id="yil"></span> <span class="js-advisor-name">Erol Erdoğar</span><span data-i18n-text="footer_role"> · TURYAP ATAŞEHİR İMZA Gayrimenkul danışmanı</span></p></div></footer>
   <div class="contact-fab" data-contact-fab>
     <div class="contact-fab-panel" id="contact-fab-panel" role="group" aria-label="Hızlı iletişim"></div>
     <div class="contact-fab-toggle-wrap">
       <span class="contact-fab-pulse" aria-hidden="true"></span>
-      <button type="button" class="contact-fab-toggle" aria-expanded="false" aria-controls="contact-fab-panel" aria-label="İletişim menüsünü aç">
+      <button type="button" class="contact-fab-toggle" aria-expanded="false" aria-controls="contact-fab-panel" data-i18n-attr="aria-label:fab_open" aria-label="İletişim menüsünü aç">
         <span class="contact-fab-toggle-icon" aria-hidden="true"></span>
       </button>
     </div>
   </div>
   <script src="site-config.js"></script>
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

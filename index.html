@@ -25,17 +25,25 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="logo" href="index.html"><span class="logo-brand"><img src="assets/logo2.png" alt="TURYAP" class="logo-img" /><span class="logo-branch">ATAŞEHİR İMZA</span></span><span class="logo-name">Erol Erdoğar</span></a>
-      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menüyü aç">
-        <span class="nav-toggle-bar"></span>
-      </button>
-      <nav id="site-nav" class="site-nav" aria-label="Ana menü">
-        <ul>
-          <li><a href="index.html" aria-current="page">Ana Sayfa</a></li>
-          <li><a href="ilanlar.html">İlanlarım</a></li>
-          <li><a href="hakkimda.html">Hakkımda</a></li>
-          <li><a href="iletisim.html" class="nav-cta">İletişim</a></li>
-        </ul>
-      </nav>
+      <div class="header-actions">
+        <nav id="site-nav" class="site-nav" aria-label="Ana menü">
+          <ul>
+            <li><a href="index.html" aria-current="page">Ana Sayfa</a></li>
+            <li><a href="ilanlar.html">İlanlarım</a></li>
+            <li><a href="hakkimda.html">Hakkımda</a></li>
+            <li class="site-nav-cta-lang">
+              <a href="iletisim.html" class="nav-cta">İletişim</a>
+              <div class="lang-switch-host lang-switch-host--after-cta" data-lang-host aria-hidden="false"></div>
+            </li>
+          </ul>
+        </nav>
+        <div class="header-end">
+          <div class="lang-switch-host lang-switch-host--toolbar" data-lang-host aria-hidden="false"></div>
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menüyü aç">
+            <span class="nav-toggle-bar"></span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -61,13 +69,13 @@
         </div>
         <footer class="discover-strip-footer">
           <div id="discover-strip-carousel" class="discover-strip-carousel" hidden>
-            <button type="button" class="discover-carousel-nav discover-carousel-prev" aria-label="Previous">
+            <button type="button" class="discover-carousel-nav discover-carousel-prev" data-i18n-attr="aria-label:carousel_prev" aria-label="Previous">
               <span aria-hidden="true">‹</span>
             </button>
             <div class="discover-carousel-frame">
               <div class="discover-strip-carousel-track js-discover-carousel-track"></div>
             </div>
-            <button type="button" class="discover-carousel-nav discover-carousel-next" aria-label="Next">
+            <button type="button" class="discover-carousel-nav discover-carousel-next" data-i18n-attr="aria-label:carousel_next" aria-label="Next">
               <span aria-hidden="true">›</span>
             </button>
           </div>
@@ -96,14 +104,14 @@
           <p class="hero-re-photo-note"></p>
         </div>
         <div class="hero-re-copy">
-          <p class="badge-turap">TURYAP ATAŞEHİR İMZA Gayrimenkul danışmanı</p>
+          <p class="badge-turap" data-i18n-text="advisor_title">TURYAP ATAŞEHİR İMZA Gayrimenkul danışmanı</p>
           <h1 class="js-advisor-name">Erol Erdoğar</h1>
           <p class="hero-re-slogan">
-            TURYAP ATAŞEHİR İMZA Gayrimenkul Danışmanı | <span class="js-region">Fikirtepe, Kadıköy ve Ataşehir</span> Uzmanı
+            <span data-i18n-hero-slogan="before">TURYAP ATAŞEHİR İMZA Gayrimenkul Danışmanı | </span><span class="js-region">Fikirtepe, Kadıköy ve Ataşehir</span><span data-i18n-hero-slogan="after"> uzmanı</span>
           </p>
           <p class="hero-re-lead">
-            Doğru fiyatlandırma, güvenilir iletişim ve hızlı sonuç odaklı danışmanlık sunuyorum.
-            Satılık ve kiralık ilanlar için hemen iletişime geçebilirsiniz.
+            <span data-i18n-text="hero_lead_1">Doğru fiyatlandırma, güvenilir iletişim ve hızlı sonuç odaklı danışmanlık sunuyorum.</span><br />
+            <span data-i18n-text="hero_lead_2">Satılık ve kiralık ilanlar için hemen iletişime geçebilirsiniz.</span>
           </p>
           <div class="hero-actions hero-actions--triple">
             <a class="btn btn-primary" href="ilanlar.html">İlanlarım</a>
@@ -119,11 +127,11 @@
 
     <section class="section section--tight">
       <div class="wrap">
-        <h2 class="section-title section-title--sm">Öne çıkan ilanlar</h2>
-        <p class="section-intro">Güncel fiyat ve detay için iletişime geçin; ilanlar düzenli güncellenir.</p>
+        <h2 class="section-title section-title--sm" data-i18n-text="featured_title">Öne çıkan ilanlar</h2>
+        <p class="section-intro" data-i18n-text="featured_intro">Güncel fiyat ve detay için iletişime geçin; ilanlar düzenli güncellenir.</p>
         <div id="home-featured-root" class="listing-grid listing-grid--home"></div>
         <p class="text-center" style="margin-top: 1.5rem">
-          <a class="btn btn-primary" href="ilanlar.html">Tüm ilanları gör</a>
+          <a class="btn btn-primary" href="ilanlar.html" data-i18n-text="view_all_listings">Tüm ilanları gör</a>
         </p>
       </div>
     </section>
@@ -131,70 +139,64 @@
     <section class="section section-alt section--tight">
       <div class="wrap trust-row">
         <div class="trust-item">
-          <strong>TURYAP ATAŞEHİR İMZA Gayrimenkul</strong>
-          <span>Çalıştığım marka; süreçte şeffaflık ve profesyonel destek.</span>
+          <strong data-i18n-text="trust_1_h">TURYAP ATAŞEHİR İMZA Gayrimenkul</strong>
+          <span data-i18n-text="trust_1_p">Çalıştığım marka; süreçte şeffaflık ve profesyonel destek.</span>
         </div>
         <div class="trust-item">
-          <strong>Güncel ilanlar</strong>
-          <span>Yayındaki portföyü düzenli kontrol ediyorum.</span>
+          <strong data-i18n-text="trust_2_h">Güncel ilanlar</strong>
+          <span data-i18n-text="trust_2_p">Yayındaki portföyü düzenli kontrol ediyorum.</span>
         </div>
         <div class="trust-item">
-          <strong>Hızlı dönüş</strong>
-          <span>Telefon ve WhatsApp ile ulaşabilirsiniz.</span>
+          <strong data-i18n-text="trust_3_h">Hızlı dönüş</strong>
+          <span data-i18n-text="trust_3_p">Telefon ve WhatsApp ile ulaşabilirsiniz.</span>
         </div>
       </div>
     </section>
 
     <section class="section section--tight">
       <div class="wrap">
-        <h2 class="section-title section-title--sm">Müşteri görüşleri</h2>
-        <div class="review-carousel" data-review-carousel aria-label="Müşteri yorum görselleri">
-          <button type="button" class="review-carousel-nav review-carousel-prev" data-review-prev aria-label="Önceki yorum görselleri"></button>
+        <h2 class="section-title section-title--sm" data-i18n-text="reviews_title">Müşteri görüşleri</h2>
+        <div class="review-carousel" data-review-carousel data-i18n-attr="aria-label:reviews_carousel_label" aria-label="Müşteri yorum görselleri">
+          <button type="button" class="review-carousel-nav review-carousel-prev" data-review-prev data-i18n-attr="aria-label:reviews_prev" aria-label="Önceki yorum görselleri"></button>
           <div class="review-carousel-viewport">
-            <div class="review-photo-grid" data-review-track>
-              <a class="review-photo-card" href="assets/musteri-yorumlari/review-01.png" target="_blank" rel="noopener noreferrer">
-                <img src="assets/musteri-yorumlari/review-01.png" alt="Müşteri yorumu görseli 1" loading="lazy" decoding="async" />
-              </a>
-              <a class="review-photo-card" href="assets/musteri-yorumlari/review-02.png" target="_blank" rel="noopener noreferrer">
-                <img src="assets/musteri-yorumlari/review-02.png" alt="Müşteri yorumu görseli 2" loading="lazy" decoding="async" />
-              </a>
-              <a class="review-photo-card" href="assets/musteri-yorumlari/review-03.png" target="_blank" rel="noopener noreferrer">
-                <img src="assets/musteri-yorumlari/review-03.png" alt="Müşteri yorumu görseli 3" loading="lazy" decoding="async" />
-              </a>
-              <a class="review-photo-card" href="assets/musteri-yorumlari/review-04.png" target="_blank" rel="noopener noreferrer">
-                <img src="assets/musteri-yorumlari/review-04.png" alt="Müşteri yorumu görseli 4" loading="lazy" decoding="async" />
-              </a>
-              <a class="review-photo-card" href="assets/musteri-yorumlari/review-05.png" target="_blank" rel="noopener noreferrer">
-                <img src="assets/musteri-yorumlari/review-05.png" alt="Müşteri yorumu görseli 5" loading="lazy" decoding="async" />
-              </a>
-              <a class="review-photo-card" href="assets/musteri-yorumlari/review-06.png" target="_blank" rel="noopener noreferrer">
-                <img src="assets/musteri-yorumlari/review-06.png" alt="Müşteri yorumu görseli 6" loading="lazy" decoding="async" />
-              </a>
-            </div>
+            <div class="review-photo-grid" data-review-track></div>
           </div>
-          <button type="button" class="review-carousel-nav review-carousel-next" data-review-next aria-label="Sonraki yorum görselleri"></button>
+          <button type="button" class="review-carousel-nav review-carousel-next" data-review-next data-i18n-attr="aria-label:reviews_next" aria-label="Sonraki yorum görselleri"></button>
         </div>
+        <p class="text-center" style="margin-top: 1.25rem">
+          <a class="btn btn-primary" href="musteri-yorumlari.html" data-i18n-text="view_all_reviews">Tüm görüşleri görüntüle</a>
+        </p>
       </div>
     </section>
 
     <section class="section section--cta-bottom">
       <div class="wrap narrow cta-inline">
-        <p>Detay veya randevu için <a class="js-wa wa-inline" href="#">WhatsApp</a> veya <a class="js-tel" href="#">telefon</a>.</p>
+        <p data-i18n="cta_bottom_html">Detay veya randevu için <a class="js-wa wa-inline" href="#">WhatsApp</a> veya <a class="js-tel" href="#">telefon</a>.</p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <p>© <span id="yil"></span> <span class="js-advisor-name">Erol Erdoğar</span> · TURYAP ATAŞEHİR İMZA Gayrimenkul danışmanı</p>
+      <p>© <span id="yil"></span> <span class="js-advisor-name">Erol Erdoğar</span><span data-i18n-text="footer_role"> · TURYAP ATAŞEHİR İMZA Gayrimenkul danışmanı</span></p>
     </div>
   </footer>
+
+  <div id="home-reviews-lightbox" class="listing-lightbox home-reviews-lightbox" role="dialog" aria-modal="true" data-i18n-attr="aria-label:lightbox_photo_label" aria-label="Fotoğraf büyütülmüş görünüm" hidden>
+    <button type="button" class="listing-lightbox-close" aria-label="Kapat" data-i18n-attr="aria-label:close">&times;</button>
+    <button type="button" class="listing-lightbox-nav listing-lightbox-prev" data-home-review-lb-step="-1" data-i18n-attr="aria-label:lightbox_prev_ph" aria-label="Önceki fotoğraf"></button>
+    <div class="listing-lightbox-stack" data-home-review-lb-touch>
+      <img class="listing-lightbox-img" src="" alt="" />
+      <p class="listing-lightbox-counter" aria-live="polite"></p>
+    </div>
+    <button type="button" class="listing-lightbox-nav listing-lightbox-next" data-home-review-lb-step="1" data-i18n-attr="aria-label:lightbox_next_ph" aria-label="Sonraki fotoğraf"></button>
+  </div>
 
   <div class="contact-fab" data-contact-fab>
     <div class="contact-fab-panel" id="contact-fab-panel" role="group" aria-label="Hızlı iletişim"></div>
     <div class="contact-fab-toggle-wrap">
       <span class="contact-fab-pulse" aria-hidden="true"></span>
-      <button type="button" class="contact-fab-toggle" aria-expanded="false" aria-controls="contact-fab-panel" aria-label="İletişim menüsünü aç">
+      <button type="button" class="contact-fab-toggle" aria-expanded="false" aria-controls="contact-fab-panel" data-i18n-attr="aria-label:fab_open" aria-label="İletişim menüsünü aç">
         <span class="contact-fab-toggle-icon" aria-hidden="true"></span>
       </button>
     </div>
@@ -202,6 +204,9 @@
 
   <script src="site-config.js"></script>
   <script src="ilanlar-data.js"></script>
+  <script src="ilanlar-en.js"></script>
+  <script src="musteri-yorumlari-data.js"></script>
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

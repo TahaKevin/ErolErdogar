@@ -5,6 +5,22 @@
   var detailRoot = document.getElementById("ilan-detay-root");
   var statsRoot = document.getElementById("ilanlar-stats");
 
+  function tUi(key) {
+    if (typeof window.I18N !== "undefined") return window.I18N.t(key);
+    if (key === "stats_aria") return "Toplam {total} ilan: {sat} satılık, {kir} kiralık";
+    return key;
+  }
+
+  function formatUi(key, vars) {
+    if (typeof window.I18N !== "undefined") return window.I18N.format(key, vars);
+    return String(tUi(key)).replace(/\{total\}/g, vars.total).replace(/\{sat\}/g, vars.sat).replace(/\{kir\}/g, vars.kir);
+  }
+
+  function listingLoc(l) {
+    if (typeof window.I18N !== "undefined") return window.I18N.listingForLocale(l);
+    return l;
+  }
+
   function renderListingStatsPanel() {
     if (!statsRoot) return;
     var data = ILANLAR_DATA;
@@ -14,30 +30,33 @@
       if (data[i].type === "kiralik") kir++;
     }
     var sat = total - kir;
-    statsRoot.setAttribute(
-      "aria-label",
-      "Toplam " + total + " ilan: " + sat + " satılık, " + kir + " kiralık"
-    );
+    statsRoot.setAttribute("aria-label", formatUi("stats_aria", { total: total, sat: sat, kir: kir }));
     statsRoot.innerHTML =
       '<div class="listing-stats-panel-inner">' +
       '<div class="listing-stats-total">' +
       '<span class="listing-stats-total-num">' +
       String(total) +
       "</span>" +
-      '<span class="listing-stats-total-label">toplam ilan</span>' +
+      '<span class="listing-stats-total-label">' +
+      tUi("stats_total_label") +
+      "</span>" +
       "</div>" +
       '<div class="listing-stats-breakdown">' +
       '<span class="listing-stats-pill listing-stats-pill--sale">' +
       '<span class="listing-stats-pill-num">' +
       String(sat) +
       "</span>" +
-      '<span class="listing-stats-pill-text">Satılık</span>' +
+      '<span class="listing-stats-pill-text">' +
+      tUi("listing_badge_sale") +
+      "</span>" +
       "</span>" +
       '<span class="listing-stats-pill listing-stats-pill--rent">' +
       '<span class="listing-stats-pill-num">' +
       String(kir) +
       "</span>" +
-      '<span class="listing-stats-pill-text">Kiralık</span>' +
+      '<span class="listing-stats-pill-text">' +
+      tUi("listing_badge_rent") +
+      "</span>" +
       "</span>" +
       "</div></div>";
   }
@@ -99,14 +118,24 @@
   }
 
   function renderListingMapBlock(l) {
+    var L = listingLoc(l);
     var url = getListingMapsEmbedUrl(l);
     if (!url) return "";
-    var loc = String(l.location || "").trim();
+    var loc = String(L.location || "").trim();
     var locHtml = loc ? '<p class="listing-map-text">' + escapeHtml(loc) + "</p>" : "";
-    var titleAttr = escapeHtml("İlan konumu — " + (l.title || "harita"));
+    var mapHead = escapeHtml(tUi("listing_map_heading"));
+    var titleAttr = escapeHtml(
+      (L.title || "") +
+        " " +
+        String(tUi("listing_map_heading")).trim() +
+        " " +
+        String(tUi("listing_map_iframe_suffix")).trim()
+    );
     return (
       '<div class="listing-map-block">' +
-      '<h3 class="listing-map-title">Konum</h3>' +
+      '<h3 class="listing-map-title">' +
+      mapHead +
+      "</h3>" +
       locHtml +
       '<div class="listing-map-frame">' +
       '<iframe class="listing-map-iframe" src="' +
@@ -140,6 +169,7 @@
     if (!photos || !photos.length) return "";
     return photos
       .map(function (src, idx) {
+        var ph = tUi("photo_n") + " " + (idx + 1);
         return (
           '<button type="button" class="listing-thumb' +
           (idx === 0 ? " is-active" : "") +
@@ -147,8 +177,8 @@
           escapeHtml(listingId) +
           '" data-photo-index="' +
           idx +
-          '" aria-label="Fotoğraf ' +
-          (idx + 1) +
+          '" aria-label="' +
+          escapeHtml(ph) +
           '"><img src="' +
           escapeHtml(src) +
           '" alt="" loading="lazy" decoding="async" /></button>'
@@ -166,10 +196,8 @@
       dots +=
         '<button type="button" class="listing-thumbs-dot' +
         (p === 0 ? " is-active" : "") +
-        '" aria-label="Küçük resim grubu ' +
-        (p + 1) +
-        "/" +
-        pages +
+        '" aria-label="' +
+        escapeHtml(tUi("thumbs_group") + " " + (p + 1) + "/" + pages) +
         '" data-thumb-page="' +
         p +
         '"></button>';
@@ -177,12 +205,16 @@
     return (
       '<div class="listing-thumbs-carousel">' +
       '<div class="listing-thumbs-carousel-row">' +
-      '<button type="button" class="listing-thumbs-nav listing-thumbs-nav--prev" aria-label="Küçük resimleri sola kaydır"></button>' +
+      '<button type="button" class="listing-thumbs-nav listing-thumbs-nav--prev" aria-label="' +
+      escapeHtml(tUi("thumbs_scroll_prev")) +
+      '"></button>' +
       '<div class="listing-thumbs-strip-wrap">' +
       '<div class="listing-thumbs-strip">' +
       inner +
       "</div></div>" +
-      '<button type="button" class="listing-thumbs-nav listing-thumbs-nav--next" aria-label="Küçük resimleri sağa kaydır"></button>' +
+      '<button type="button" class="listing-thumbs-nav listing-thumbs-nav--next" aria-label="' +
+      escapeHtml(tUi("thumbs_scroll_next")) +
+      '"></button>' +
       "</div>" +
       '<div class="listing-thumbs-dots" role="presentation">' +
       dots +
@@ -192,6 +224,7 @@
 
   function renderArticle(l, opts) {
     opts = opts || {};
+    var L = listingLoc(l);
     var headingTag = opts.headingTag || "h2";
     var photos = getPhotosList(l);
     var realPhotos = (l.photos || []).filter(function (p) {
@@ -199,19 +232,24 @@
     });
     var mainSrc = photos[0] || "";
     var badgeClass = l.type === "kiralik" ? "listing-badge--rent" : "listing-badge--sale";
-    var badgeText = l.type === "kiralik" ? "Kiralık" : "Satılık";
+    var badgeText = l.type === "kiralik" ? tUi("listing_badge_rent") : tUi("listing_badge_sale");
     var videoRaw = String(l.videoUrl || "").trim();
     var embed = youtubeEmbedUrl(videoRaw);
     var hasVideo = !!embed;
 
     var metaParts = [];
-    if (l.listingNo) metaParts.push('<span class="listing-meta-no">İlan no: ' + escapeHtml(l.listingNo) + "</span>");
-    if (l.listingDate) metaParts.push('<span class="listing-meta-date">' + escapeHtml(l.listingDate) + "</span>");
+    if (l.listingNo)
+      metaParts.push(
+        '<span class="listing-meta-no">' + escapeHtml(tUi("listing_meta_no_prefix")) + " " + escapeHtml(l.listingNo) + "</span>"
+      );
+    if (L.listingDate) metaParts.push('<span class="listing-meta-date">' + escapeHtml(L.listingDate) + "</span>");
     var metaHtml = metaParts.length ? '<p class="listing-meta-line">' + metaParts.join(" · ") + "</p>" : "";
 
-    var descHtml = formatDescriptionHtml(l.description);
+    var descHtml = formatDescriptionHtml(L.description);
     var descBlock = descHtml
-      ? '<div class="listing-detail-desc-block"><h3 class="listing-desc-title">İlan hakkında</h3><div class="listing-detail-desc prose">' +
+      ? '<div class="listing-detail-desc-block"><h3 class="listing-desc-title">' +
+        escapeHtml(tUi("listing_about_heading")) +
+        '</h3><div class="listing-detail-desc prose">' +
         descHtml +
         "</div></div>"
       : "";
@@ -221,14 +259,18 @@
       escapeHtml(l.id) +
       '" hidden>' +
       (hasVideo
-        ? '<div class="listing-video-frame"><iframe src="" title="İlan videosu" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>'
+        ? '<div class="listing-video-frame"><iframe src="" title="' +
+          escapeHtml(tUi("listing_video")) +
+          '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>'
         : "") +
       "</div>";
 
     var toolbarVideo = hasVideo
       ? '<button type="button" class="listing-tool-btn js-toggle-video" data-listing-id="' +
         escapeHtml(l.id) +
-        '" aria-expanded="false">Video</button>'
+        '" aria-expanded="false">' +
+        escapeHtml(tUi("listing_video")) +
+        "</button>"
       : "";
 
     var openTag = "<" + headingTag + ">";
@@ -254,7 +296,7 @@
       '<img class="listing-main-img" src="' +
       escapeHtml(mainSrc) +
       '" alt="' +
-      escapeHtml(l.title) +
+      escapeHtml(L.title) +
       '" loading="eager" />' +
       "</div>" +
       '<button type="button" class="listing-nav listing-nav--next" data-listing-id="' +
@@ -265,13 +307,17 @@
       "</div>" +
       '<p class="listing-photo-count" aria-live="polite"><span class="listing-photo-count-num">1</span> / ' +
       (realPhotos.length || 1) +
-      " fotoğraf</p>" +
+      " " +
+      escapeHtml(tUi("listing_photo_progress")) +
+      "</p>" +
       '<div class="listing-gallery-toolbar">' +
       '<button type="button" class="listing-tool-btn js-open-lightbox" data-listing-id="' +
       escapeHtml(l.id) +
       '"' +
       (!hasRealPhotos(l) ? " disabled" : "") +
-      ">Büyük fotoğraf</button>" +
+      ">" +
+      escapeHtml(tUi("listing_photo_big")) +
+      "</button>" +
       toolbarVideo +
       "</div>" +
       videoPanel +
@@ -285,17 +331,21 @@
       badgeText +
       "</span>" +
       openTag +
-      escapeHtml(l.title) +
+      escapeHtml(L.title) +
       closeTag +
       '<p class="listing-detail-price">' +
       escapeHtml(l.price) +
       "</p>" +
       '<p class="listing-detail-loc">' +
-      escapeHtml(l.location) +
+      escapeHtml(L.location) +
       "</p>" +
-      renderSpecs(l.specs) +
+      renderSpecs(L.specs || l.specs) +
       descBlock +
-      '<div class="listing-cta-row"><a class="btn btn-wa js-wa" href="#">WhatsApp</a><a class="btn btn-primary js-tel" href="#">Ara</a></div>' +
+      '<div class="listing-cta-row"><a class="btn btn-wa js-wa" href="#">' +
+      escapeHtml(tUi("listing_whatsapp")) +
+      '</a><a class="btn btn-primary js-tel" href="#">' +
+      escapeHtml(tUi("listing_call")) +
+      "</a></div>" +
       "</div>" +
       "</article>"
     );
@@ -339,7 +389,8 @@
   }
 
   function renderCardIconRow(l) {
-    var loc = cardLocShort(l);
+    var Ll = listingLoc(l);
+    var loc = cardLocShort(Ll);
     var area = cardAreaLabel(l);
     var rooms = cardRoomsLabel(l);
     if (!loc && !area && !rooms) return "";
@@ -366,17 +417,18 @@
   }
 
   function renderListCard(l) {
+    var Ll = listingLoc(l);
     var realPhotos = (l.photos || []).filter(function (p) {
       return String(p || "").trim();
     });
     var first = realPhotos[0] || "";
-    var badgeText = l.type === "kiralik" ? "Kiralık" : "Satılık";
+    var badgeText = l.type === "kiralik" ? tUi("listing_badge_rent") : tUi("listing_badge_sale");
     var imgHtml = first
       ? '<img class="listing-card-cover" src="' + escapeHtml(first) + '" alt="" loading="lazy" decoding="async" />'
       : '<div class="listing-card-cover listing-card-cover--placeholder" aria-hidden="true"></div>';
     var no = String(l.listingNo || "").trim();
     var overlayId = no ? '<span class="listing-card-overlay-id">#' + escapeHtml(no) + "</span>" : "";
-    var dateStr = String(l.listingDate || "").trim();
+    var dateStr = String(Ll.listingDate || l.listingDate || "").trim();
     var dateHtml = dateStr ? '<span class="listing-card-datetime">' + escapeHtml(dateStr) + "</span>" : "";
     var priceRow =
       '<div class="listing-card-price-row">' +
@@ -399,7 +451,7 @@
       "</div>" +
       '<div class="listing-card-body listing-card-body--row">' +
       "<h3>" +
-      escapeHtml(l.title) +
+      escapeHtml(Ll.title) +
       "</h3>" +
       priceRow +
       renderCardIconRow(l) +
@@ -484,7 +536,7 @@
     lbState.id = listingId;
     lbState.index = ((index % photos.length) + photos.length) % photos.length;
     lbImg.src = photos[lbState.index];
-    lbImg.alt = L.title || "";
+    lbImg.alt = (listingLoc(L) || L).title || "";
     lightbox.hidden = false;
     document.body.classList.add("listing-lightbox-open");
     if (lbPrev) lbPrev.disabled = photos.length < 2;
@@ -666,18 +718,34 @@
     if (!L) {
       detailRoot.innerHTML =
         '<div class="listing-not-found">' +
-        "<p>Bu ilan bulunamadı veya kaldırılmış olabilir.</p>" +
-        '<p><a class="btn btn-primary" href="ilanlar.html">İlanlara dön</a></p>' +
+        "<p>" +
+        (typeof window.I18N !== "undefined" && window.I18N.getLocale() === "en"
+          ? "This listing could not be found or may no longer be available."
+          : "Bu ilan bulunamadı veya kaldırılmış olabilir.") +
+        "</p>" +
+        '<p><a class="btn btn-primary" href="ilanlar.html">' +
+        (typeof window.I18N !== "undefined" && window.I18N.getLocale() === "en"
+          ? "Back to listings"
+          : "İlanlara dön") +
+        "</a></p>" +
         "</div>";
       var tnf = document.querySelector("title");
-      if (tnf) tnf.textContent = "İlan bulunamadı | Erol Erdoğar";
+      if (tnf && typeof window.I18N !== "undefined") tnf.textContent = window.I18N.t("meta_listing_not_found");
+      else if (tnf) tnf.textContent = "İlan bulunamadı | Erol Erdoğar";
     } else {
+      var DL = listingLoc(L);
       detailRoot.innerHTML = renderArticle(L, { headingTag: "h1" });
       var td = document.querySelector("title");
-      if (td) td.textContent = L.title + " | İlan | Erol Erdoğar";
+      if (td) {
+        td.textContent =
+          DL.title +
+          (typeof window.I18N !== "undefined"
+            ? window.I18N.t("meta_detail_title_suffix")
+            : " | İlan | Erol Erdoğar");
+      }
       var meta = document.querySelector('meta[name="description"]');
       if (meta) {
-        var snippet = String(L.description || L.title || "")
+        var snippet = String(DL.description || DL.title || "")
           .replace(/\s+/g, " ")
           .trim()
           .slice(0, 160);

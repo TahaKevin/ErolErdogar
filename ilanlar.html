@@ -15,15 +15,23 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="logo" href="index.html"><span class="logo-brand"><img src="assets/logo2.png" alt="TURYAP" class="logo-img" /><span class="logo-branch">ATAŞEHİR İMZA</span></span><span class="logo-name">Erol Erdoğar</span></a>
-      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menüyü aç"><span class="nav-toggle-bar"></span></button>
-      <nav id="site-nav" class="site-nav" aria-label="Ana menü">
-        <ul>
-          <li><a href="index.html">Ana Sayfa</a></li>
-          <li><a href="ilanlar.html" aria-current="page">İlanlarım</a></li>
-          <li><a href="hakkimda.html">Hakkımda</a></li>
-          <li><a href="iletisim.html" class="nav-cta">İletişim</a></li>
-        </ul>
-      </nav>
+      <div class="header-actions">
+        <nav id="site-nav" class="site-nav" aria-label="Ana menü">
+          <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="ilanlar.html" aria-current="page">İlanlarım</a></li>
+            <li><a href="hakkimda.html">Hakkımda</a></li>
+            <li class="site-nav-cta-lang">
+              <a href="iletisim.html" class="nav-cta">İletişim</a>
+              <div class="lang-switch-host lang-switch-host--after-cta" data-lang-host aria-hidden="false"></div>
+            </li>
+          </ul>
+        </nav>
+        <div class="header-end">
+          <div class="lang-switch-host lang-switch-host--toolbar" data-lang-host aria-hidden="false"></div>
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menüyü aç"><span class="nav-toggle-bar"></span></button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -32,15 +40,15 @@
       <div class="wrap">
         <div class="page-hero-head">
           <div class="page-hero-heading">
-            <h1>İlanlarım</h1>
-            <p class="page-hero-lead">Satılık ve kiralık portföy. Güncel fiyat ve detay için hemen ulaşın.</p>
+            <h1 data-i18n-text="listings_page_title">İlanlarım</h1>
+            <p class="page-hero-lead" data-i18n-text="listings_page_lead">Satılık ve kiralık portföy. Güncel fiyat ve detay için hemen ulaşın.</p>
           </div>
-          <aside class="listing-stats-panel" id="ilanlar-stats" aria-label="İlan sayıları özeti"></aside>
+          <aside class="listing-stats-panel" id="ilanlar-stats" data-i18n-attr="aria-label:stats_summary_label" aria-label="İlan sayıları özeti"></aside>
         </div>
-        <div class="filter-bar" role="group" aria-label="İlan tipi">
-          <button type="button" class="filter-btn is-active" data-filter="all">Tümü</button>
-          <button type="button" class="filter-btn" data-filter="satilik">Satılık</button>
-          <button type="button" class="filter-btn" data-filter="kiralik">Kiralık</button>
+        <div class="filter-bar" role="group" data-i18n-attr="aria-label:listings_filter_group" aria-label="İlan tipi">
+          <button type="button" class="filter-btn is-active" data-filter="all" data-i18n-text="filter_all">Tümü</button>
+          <button type="button" class="filter-btn" data-filter="satilik" data-i18n-text="filter_sale">Satılık</button>
+          <button type="button" class="filter-btn" data-filter="kiralik" data-i18n-text="filter_rent">Kiralık</button>
         </div>
       </div>
     </header>
@@ -50,19 +58,21 @@
     </section>
   </main>
 
-  <footer class="site-footer"><div class="wrap footer-inner"><p>© <span id="yil"></span> Erol Erdoğar · TURYAP ATAŞEHİR İMZA Gayrimenkul danışmanı</p></div></footer>
+  <footer class="site-footer"><div class="wrap footer-inner"><p>© <span id="yil"></span> <span class="js-advisor-name">Erol Erdoğar</span><span data-i18n-text="footer_role"> · TURYAP ATAŞEHİR İMZA Gayrimenkul danışmanı</span></p></div></footer>
 
   <div class="contact-fab" data-contact-fab>
     <div class="contact-fab-panel" id="contact-fab-panel" role="group" aria-label="Hızlı iletişim"></div>
     <div class="contact-fab-toggle-wrap">
       <span class="contact-fab-pulse" aria-hidden="true"></span>
-      <button type="button" class="contact-fab-toggle" aria-expanded="false" aria-controls="contact-fab-panel" aria-label="İletişim menüsünü aç">
+      <button type="button" class="contact-fab-toggle" aria-expanded="false" aria-controls="contact-fab-panel" data-i18n-attr="aria-label:fab_open" aria-label="İletişim menüsünü aç">
         <span class="contact-fab-toggle-icon" aria-hidden="true"></span>
       </button>
     </div>
   </div>
   <script src="site-config.js"></script>
   <script src="ilanlar-data.js"></script>
+  <script src="ilanlar-en.js"></script>
+  <script src="i18n.js"></script>
   <script src="ilanlar.js"></script>
   <script src="script.js"></script>
 </body>

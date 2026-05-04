@@ -26,7 +26,8 @@
             p.endsWith("ilanlar.html") ||
             p.endsWith("ilan-detay.html") ||
             p.endsWith("hakkimda.html") ||
-            p.endsWith("iletisim.html")
+            p.endsWith("iletisim.html") ||
+            p.endsWith("musteri-yorumlari.html")
           ) {
             fromInternalPage = true;
           }
@@ -280,22 +281,42 @@
       return "";
     }
 
-    function compactLocLine(l) {
-      var a = String(l.cardLocationShort || "").trim();
-      var b = String(l.location || "").trim();
+    function featuredLocListing(l) {
+      if (typeof window.I18N !== "undefined") return window.I18N.listingForLocale(l);
+      return l;
+    }
+
+    function tFeat(key) {
+      if (typeof window.I18N !== "undefined") return window.I18N.t(key);
+      var map = {
+        listing_badge_rent: "Kiralık",
+        listing_badge_sale: "Satılık",
+        listing_fallback_title: "İlan",
+        konum_placeholder: "Konum bilgisi",
+        listing_missing_title: "İlan bulunamadı",
+        listing_missing_hint: "site-config homeFeaturedSlots ve ilanlar-data id eşleşmesini kontrol edin.",
+        listing_all_card_badge: "Tümü",
+      };
+      return map[key] || key;
+    }
+
+    function compactLocLineFrom(F) {
+      var a = String(F.cardLocationShort || "").trim();
+      var b = String(F.location || "").trim();
       return a || b || "";
     }
 
     function cardFromListing(l) {
+      var F = featuredLocListing(l);
       var src = firstPhotoSrc(l);
       var badgeClass = l.type === "kiralik" ? "listing-badge--rent" : "listing-badge--sale";
-      var badgeText = l.type === "kiralik" ? "Kiralık" : "Satılık";
+      var badgeText = l.type === "kiralik" ? tFeat("listing_badge_rent") : tFeat("listing_badge_sale");
       var imgBlock = src
         ? '<div class="listing-card-img"><img class="listing-card-img-el" src="' +
           escapeHtml(src) +
           '" alt="" loading="lazy" decoding="async" /></div>'
         : '<div class="listing-card-img listing-card-img--placeholder" aria-hidden="true"></div>';
-      var loc = compactLocLine(l);
+      var loc = compactLocLineFrom(F);
       return (
         '<article class="listing-card listing-card--compact" data-type="' +
         escapeHtml(l.type) +
@@ -311,13 +332,13 @@
         escapeHtml(badgeText) +
         "</span>" +
         "<h3>" +
-        escapeHtml(l.title || "İlan") +
+        escapeHtml(F.title || tFeat("listing_fallback_title")) +
         "</h3>" +
         '<p class="listing-price">' +
         escapeHtml(l.price || "—") +
         "</p>" +
         '<p class="listing-loc">' +
-        escapeHtml(loc || "Konum bilgisi") +
+        escapeHtml(loc || tFeat("konum_placeholder")) +
         "</p>" +
         "</div></a></article>"
       );
@@ -329,12 +350,18 @@
         '<a href="ilanlar.html" class="listing-card-link">' +
         '<div class="listing-card-img listing-card-img--placeholder" aria-hidden="true"></div>' +
         '<div class="listing-card-body">' +
-        '<span class="listing-badge listing-badge--sale">İlan</span>' +
-        "<h3>İlan bulunamadı</h3>" +
+        '<span class="listing-badge listing-badge--sale">' +
+        escapeHtml(tFeat("listing_fallback_title")) +
+        "</span>" +
+        "<h3>" +
+        escapeHtml(tFeat("listing_missing_title")) +
+        "</h3>" +
         '<p class="listing-price">ID: ' +
         escapeHtml(rawId) +
         "</p>" +
-        '<p class="listing-loc">site-config homeFeaturedSlots ve ilanlar-data id eşleşmesini kontrol edin.</p>' +
+        '<p class="listing-loc">' +
+        escapeHtml(tFeat("listing_missing_hint")) +
+        "</p>" +
         "</div></a></article>"
       );
     }
@@ -354,7 +381,9 @@
         '<a href="ilanlar.html" class="listing-card-link">' +
         imgBlock +
         '<div class="listing-card-body">' +
-        '<span class="listing-badge listing-badge--sale">Tümü</span>' +
+        '<span class="listing-badge listing-badge--sale">' +
+        escapeHtml(tFeat("listing_all_card_badge")) +
+        "</span>" +
         "<h3>" +
         escapeHtml(title) +
         "</h3>" +
@@ -806,6 +835,18 @@
       bindDiscoverScrollSync();
     });
 
+    function discoverAria(key) {
+      if (typeof window.I18N !== "undefined") return window.I18N.t(key);
+      var map = {
+        discover_toggle_fs: "Siteye geç",
+        discover_toggle_shrink: "Siteye geç — ön izlemeyi küçült",
+        discover_toggle_expand: "Ön izlemeyi büyüt",
+        discover_toggle_compact: "Ön izlemeyi dar şeride küçült",
+        discover_toggle_other: "Ön izlemeyi değiştir",
+      };
+      return map[key] || key;
+    }
+
     function syncToggleAria() {
       if (!toggleBtn) return;
       var fs = root.classList.contains("is-fs");
@@ -813,16 +854,16 @@
       var tall = root.classList.contains("is-tall");
       if (fs) {
         toggleBtn.setAttribute("aria-expanded", "true");
-        toggleBtn.setAttribute("aria-label", "Siteye geç — ön izlemeyi küçült");
+        toggleBtn.setAttribute("aria-label", discoverAria("discover_toggle_shrink"));
       } else if (compact) {
         toggleBtn.setAttribute("aria-expanded", "false");
-        toggleBtn.setAttribute("aria-label", "Ön izlemeyi büyüt");
+        toggleBtn.setAttribute("aria-label", discoverAria("discover_toggle_expand"));
       } else if (tall) {
         toggleBtn.setAttribute("aria-expanded", "true");
-        toggleBtn.setAttribute("aria-label", "Ön izlemeyi dar şeride küçült");
+        toggleBtn.setAttribute("aria-label", discoverAria("discover_toggle_compact"));
       } else {
         toggleBtn.setAttribute("aria-expanded", "true");
-        toggleBtn.setAttribute("aria-label", "Ön izlemeyi değiştir");
+        toggleBtn.setAttribute("aria-label", discoverAria("discover_toggle_other"));
       }
     }
 
@@ -984,7 +1025,8 @@
     document.querySelectorAll(".js-tel").forEach(function (el) {
       el.href = tel ? "tel:" + tel.replace(/\s/g, "") : "#";
       if (el.classList.contains("contact-big")) {
-        el.textContent = SITE.phoneDisplay || tel || "Telefon ekleyin";
+        var phFb = typeof window.I18N !== "undefined" ? window.I18N.t("phone_fallback") : "Telefon ekleyin";
+        el.textContent = SITE.phoneDisplay || tel || phFb;
       }
     });
 
@@ -1000,7 +1042,8 @@
       el.href = igUrl || "#";
     });
     document.querySelectorAll(".js-ig-username").forEach(function (el) {
-      el.textContent = igUser ? "@" + igUser : "@kullaniciadi";
+      var igFb = typeof window.I18N !== "undefined" ? window.I18N.t("ig_fallback") : "@kullaniciadi";
+      el.textContent = igUser ? "@" + igUser : igFb;
     });
 
     var sbUrl = String(SITE.sahibindenUrl || "").trim();
@@ -1060,14 +1103,17 @@
       } else {
         frame.style.display = "none";
         if (embed) embed.style.display = "none";
-        if (note) {
+        if (note)
           note.textContent =
             "Harita için Google Haritalar’da konumunuzu açın → Paylaş → Haritayı yerleştir → iframe src linkini site-config.js içindeki mapsEmbedUrl alanına yapıştırın.";
-        }
       }
     }
 
     renderContactFabPanels();
+
+    if (typeof window.I18N !== "undefined") {
+      window.I18N.applyMapNote();
+    }
   }
 
   function initContactFab() {
@@ -1077,13 +1123,17 @@
     var panel = root.querySelector(".contact-fab-panel");
     if (!toggle || !panel) return;
 
+    function fabAria(open) {
+      if (typeof window.I18N !== "undefined") {
+        return open ? window.I18N.t("fab_close") : window.I18N.t("fab_open");
+      }
+      return open ? "İletişim menüsünü kapat" : "İletişim menüsünü aç";
+    }
+
     function setOpen(open) {
       root.classList.toggle("is-open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      toggle.setAttribute(
-        "aria-label",
-        open ? "İletişim menüsünü kapat" : "İletişim menüsünü aç"
-      );
+      toggle.setAttribute("aria-label", fabAria(open));
     }
 
     toggle.addEventListener("click", function (e) {
@@ -1110,6 +1160,153 @@
         setOpen(false);
       }, 0);
     });
+  }
+
+  function renderHomeReviewStrip() {
+    var track = document.querySelector("[data-review-track]");
+    if (!track || typeof MUSTERI_YORUM_PHOTOS === "undefined") return;
+    var urls = MUSTERI_YORUM_PHOTOS.filter(function (u) {
+      return String(u || "").trim();
+    });
+    function altLine(i) {
+      if (typeof window.I18N !== "undefined") return window.I18N.t("review_alt") + " " + (i + 1);
+      return "Müşteri yorumu görseli " + (i + 1);
+    }
+    var openHint =
+      typeof window.I18N !== "undefined" ? window.I18N.t("rotator_open_fs") : "Tam ekranda aç";
+    track.innerHTML = urls
+      .map(function (url, i) {
+        return (
+          '<button type="button" class="review-photo-card review-photo-card--zoom" data-home-review-idx="' +
+          i +
+          '" aria-label="' +
+          escapeHtmlLite(altLine(i) + " — " + openHint) +
+          '">' +
+          '<img src="' +
+          escapeHtmlLite(url) +
+          '" alt="' +
+          escapeHtmlLite(altLine(i)) +
+          '" loading="lazy" decoding="async" /></button>'
+        );
+      })
+      .join("");
+  }
+
+  function initHomeReviewsLightbox() {
+    var lightbox = document.getElementById("home-reviews-lightbox");
+    if (!lightbox || typeof MUSTERI_YORUM_PHOTOS === "undefined") return;
+    var urls = MUSTERI_YORUM_PHOTOS.filter(function (u) {
+      return String(u || "").trim();
+    });
+    if (urls.length === 0) return;
+
+    var track = document.querySelector("[data-review-track]");
+    var img = lightbox.querySelector(".listing-lightbox-img");
+    var counter = lightbox.querySelector(".listing-lightbox-counter");
+    var closeBtn = lightbox.querySelector(".listing-lightbox-close");
+    var touchRoot = lightbox.querySelector("[data-home-review-lb-touch]");
+    var idx = 0;
+
+    function altFor(i) {
+      var base =
+        typeof window.I18N !== "undefined"
+          ? window.I18N.t("review_alt")
+          : "Müşteri yorumu görseli";
+      return base + " " + (i + 1) + "/" + urls.length;
+    }
+
+    function syncButtons() {
+      var navs = lightbox.querySelectorAll("[data-home-review-lb-step]");
+      navs.forEach(function (b) {
+        b.disabled = urls.length < 2;
+      });
+    }
+
+    function updateView() {
+      if (!img || !counter) return;
+      var i = ((idx % urls.length) + urls.length) % urls.length;
+      idx = i;
+      img.src = urls[i];
+      img.alt = altFor(i);
+      counter.textContent = String(i + 1) + "/" + String(urls.length);
+    }
+
+    function openAt(i) {
+      idx = typeof i === "number" && !isNaN(i) ? i : 0;
+      updateView();
+      lightbox.hidden = false;
+      document.body.classList.add("listing-lightbox-open");
+      syncButtons();
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeLb() {
+      lightbox.hidden = true;
+      document.body.classList.remove("listing-lightbox-open");
+      if (img) img.removeAttribute("src");
+    }
+
+    function step(delta) {
+      if (urls.length < 2) return;
+      idx = (idx + delta + urls.length) % urls.length;
+      updateView();
+    }
+
+    if (track) {
+      track.addEventListener("click", function (e) {
+        var btn = e.target.closest("[data-home-review-idx]");
+        if (!btn || !track.contains(btn)) return;
+        var i = parseInt(btn.getAttribute("data-home-review-idx"), 10);
+        if (!isNaN(i)) openAt(i);
+      });
+    }
+
+    lightbox.addEventListener("click", function (e) {
+      var t = e.target;
+      if (!(t instanceof Element)) return;
+      if (t.closest(".listing-lightbox-close")) {
+        closeLb();
+        return;
+      }
+      var st = t.closest("[data-home-review-lb-step]");
+      if (st) {
+        var d = parseInt(st.getAttribute("data-home-review-lb-step"), 10);
+        if (!isNaN(d)) step(d);
+        return;
+      }
+      if (t === lightbox) closeLb();
+    });
+
+    document.addEventListener("keydown", function homeReviewsLbKey(e) {
+      if (lightbox.hidden) return;
+      if (e.key === "Escape") closeLb();
+      if (e.key === "ArrowLeft") step(-1);
+      if (e.key === "ArrowRight") step(1);
+    });
+
+    var tx = null;
+    if (touchRoot) {
+      touchRoot.addEventListener(
+        "touchstart",
+        function (e) {
+          if (e.touches && e.touches[0]) tx = e.touches[0].clientX;
+        },
+        { passive: true }
+      );
+      touchRoot.addEventListener(
+        "touchend",
+        function (e) {
+          if (tx == null || urls.length < 2) return;
+          var endX = e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : tx;
+          var dx = endX - tx;
+          tx = null;
+          if (Math.abs(dx) < 40) return;
+          if (dx < 0) step(1);
+          else step(-1);
+        },
+        { passive: true }
+      );
+    }
   }
 
   function initReviewCarousel() {
@@ -1203,6 +1400,8 @@
   initDiscoverStripScheduling();
   applySiteConfig();
   initContactFab();
+  renderHomeReviewStrip();
+  initHomeReviewsLightbox();
   initReviewCarousel();
   renderHomeFeaturedListings();
 })();

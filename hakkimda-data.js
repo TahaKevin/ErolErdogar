@@ -5,29 +5,27 @@
  *   assets/hakkimda/islemler/
  */
 var HAKKIMDA_ODULLER_PHOTOS = [
-  // "assets/hakkimda/oduller/1.jpg",
-  
-"assets/oduller/1.png",
-"assets/oduller/2.png",
-"assets/oduller/3.png",
-"assets/oduller/4.png",
-"assets/oduller/5.png",
-"assets/oduller/6.png",
-"assets/oduller/7.png",
-"assets/oduller/8.png",
-"assets/oduller/9.png",
-"assets/oduller/10.png",
-"assets/oduller/11.png",
-"assets/oduller/12.png",
-"assets/oduller/13.png",
-"assets/oduller/14.png",
-"assets/oduller/15.png",
-"assets/oduller/16.png",
-"assets/oduller/17.png",
- 
-
-
-
+  /* Yeni ödüller (sıra: önce 2. ve 3. fotoğraf, sonra mevcut liste, en sonda 1. fotoğraf) */
+  "assets/oduller/odul-remax-ciro-sampiyonu-2024.png",
+  "assets/oduller/odul-remax-ciro-sampiyonu-2022.png",
+  "assets/oduller/1.png",
+  "assets/oduller/2.png",
+  "assets/oduller/3.png",
+  "assets/oduller/4.png",
+  "assets/oduller/5.png",
+  "assets/oduller/6.png",
+  "assets/oduller/7.png",
+  "assets/oduller/8.png",
+  "assets/oduller/9.png",
+  "assets/oduller/10.png",
+  "assets/oduller/11.png",
+  "assets/oduller/12.png",
+  "assets/oduller/13.png",
+  "assets/oduller/14.png",
+  "assets/oduller/15.png",
+  "assets/oduller/16.png",
+  "assets/oduller/17.png",
+  "assets/oduller/odul-remax-ayin-danismani.png",
 ];
 
 var HAKKIMDA_ISLEMLER_PHOTOS = [

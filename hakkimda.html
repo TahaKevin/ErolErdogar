@@ -15,67 +15,71 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="logo" href="index.html"><span class="logo-brand"><img src="assets/logo2.png" alt="TURYAP" class="logo-img" /><span class="logo-branch">ATAŞEHİR İMZA</span></span><span class="logo-name">Erol Erdoğar</span></a>
-      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menüyü aç">
-        <span class="nav-toggle-bar"></span>
-      </button>
-      <nav id="site-nav" class="site-nav" aria-label="Ana menü">
-        <ul>
-          <li><a href="index.html">Ana Sayfa</a></li>
-          <li><a href="ilanlar.html">İlanlarım</a></li>
-          <li><a href="hakkimda.html" aria-current="page">Hakkımda</a></li>
-          <li><a href="iletisim.html" class="nav-cta">İletişim</a></li>
-        </ul>
-      </nav>
+      <div class="header-actions">
+        <nav id="site-nav" class="site-nav" aria-label="Ana menü">
+          <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="ilanlar.html">İlanlarım</a></li>
+            <li><a href="hakkimda.html" aria-current="page">Hakkımda</a></li>
+            <li class="site-nav-cta-lang">
+              <a href="iletisim.html" class="nav-cta">İletişim</a>
+              <div class="lang-switch-host lang-switch-host--after-cta" data-lang-host aria-hidden="false"></div>
+            </li>
+          </ul>
+        </nav>
+        <div class="header-end">
+          <div class="lang-switch-host lang-switch-host--toolbar" data-lang-host aria-hidden="false"></div>
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menüyü aç"><span class="nav-toggle-bar"></span></button>
+        </div>
+      </div>
     </div>
   </header>
 
   <main id="icerik">
     <header class="page-hero">
       <div class="wrap narrow">
-        <p class="badge-turap">TURYAP ATAŞEHİR İMZA Gayrimenkul</p>
-        <h1>Hakkımda</h1>
-        <p class="page-hero-lead">Güvenilir iletişim, doğru fiyatlandırma ve net süreç.</p>
+        <p class="badge-turap" data-i18n-text="about_page_badge">TURYAP ATAŞEHİR İMZA Gayrimenkul</p>
+        <h1 data-i18n-text="about_page_h1">Hakkımda</h1>
+        <p class="page-hero-lead" data-i18n-text="about_page_lead">Güvenilir iletişim, doğru fiyatlandırma ve net süreç.</p>
       </div>
     </header>
 
     <section class="section section--tight section--about-galleries">
       <div class="wrap">
-        <h2 class="section-title section-title--sm about-galleries-section-title">Ödüller ve işlemlerim</h2>
-        <p class="section-intro about-galleries-intro">
-          
-        </p>
+        <h2 class="section-title section-title--sm about-galleries-section-title" data-i18n-text="about_gallery_h2">Ödüller ve işlemlerim</h2>
+        <p class="section-intro about-galleries-intro" data-i18n-text="about_intro_galleries"></p>
         <div class="about-galleries-grid">
           <div class="about-gallery-card about-gallery-card--awards">
-            <h3 class="about-gallery-heading">Ödüller</h3>
-            <p class="about-gallery-tagline">Plaketler ve ödül töreni görselleri</p>
+            <h3 class="about-gallery-heading" data-i18n-text="awards_h">Ödüller</h3>
+            <p class="about-gallery-tagline" data-i18n-text="awards_tag">Plaketler ve ödül töreni görselleri</p>
             <div id="about-rotator-oduller" class="about-rotator" data-gallery="Ödül">
               <div class="about-rotator-frame">
-                <button type="button" class="about-rotator-viewport" title="Tam ekranda aç">
+                <button type="button" class="about-rotator-viewport" data-i18n-attr="title:rotator_open_fs" title="Tam ekranda aç">
                   <span class="about-rotator-zoom-ico" aria-hidden="true"></span>
                   <img class="about-rotator-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="" decoding="async" />
                 </button>
               </div>
-              <p class="about-rotator-hint">Tam boy görmek için görselin üzerine tıklayın.</p>
+              <p class="about-rotator-hint" data-i18n-text="rotator_hint">Tam boy görmek için görselin üzerine tıklayın.</p>
               <div class="about-rotator-controls">
-                <button type="button" class="about-rotator-prev" aria-label="Önceki görsel"></button>
-                <button type="button" class="about-rotator-next" aria-label="Sonraki görsel"></button>
+                <button type="button" class="about-rotator-prev" data-i18n-attr="aria-label:rotator_prev" aria-label="Önceki görsel"></button>
+                <button type="button" class="about-rotator-next" data-i18n-attr="aria-label:rotator_next" aria-label="Sonraki görsel"></button>
               </div>
             </div>
           </div>
           <div class="about-gallery-card about-gallery-card--works">
-            <h3 class="about-gallery-heading">İşlemlerim</h3>
-            <p class="about-gallery-tagline">İşlem hacmi ve başarı belgeleri</p>
+            <h3 class="about-gallery-heading" data-i18n-text="works_h">İşlemlerim</h3>
+            <p class="about-gallery-tagline" data-i18n-text="works_tag">İşlem hacmi ve başarı belgeleri</p>
             <div id="about-rotator-islemler" class="about-rotator" data-gallery="İşlem">
               <div class="about-rotator-frame">
-                <button type="button" class="about-rotator-viewport" title="Tam ekranda aç">
+                <button type="button" class="about-rotator-viewport" data-i18n-attr="title:rotator_open_fs" title="Tam ekranda aç">
                   <span class="about-rotator-zoom-ico" aria-hidden="true"></span>
                   <img class="about-rotator-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="" decoding="async" />
                 </button>
               </div>
-              <p class="about-rotator-hint">Tam boy görmek için görselin üzerine tıklayın.</p>
+              <p class="about-rotator-hint" data-i18n-text="rotator_hint">Tam boy görmek için görselin üzerine tıklayın.</p>
               <div class="about-rotator-controls">
-                <button type="button" class="about-rotator-prev" aria-label="Önceki görsel"></button>
-                <button type="button" class="about-rotator-next" aria-label="Sonraki görsel"></button>
+                <button type="button" class="about-rotator-prev" data-i18n-attr="aria-label:rotator_prev" aria-label="Önceki görsel"></button>
+                <button type="button" class="about-rotator-next" data-i18n-attr="aria-label:rotator_next" aria-label="Sonraki görsel"></button>
               </div>
             </div>
           </div>
@@ -85,48 +89,74 @@
 
     <section class="section section--tight">
       <div class="wrap narrow">
-        <div class="about-block">
-          <h2 class="about-h">Merhaba, ben Erol Erdoğar.</h2>
-          <p class="prose">
-            Yaklaşık 9 yıldır gayrimenkul sektöründe aktif olarak çalışıyorum. RE/MAX İmza’da <strong>2021, 2022 ve 2023</strong> yıllarında üst üste
-            <strong>işlem birinciliği</strong> elde ettim; <strong>Yıldızlar Kulübü</strong> üyesiyim. <strong>2019</strong> ve <strong>2020</strong> yıllarında işlem
-            hacminde <strong>ikinci</strong> ve <strong>üçüncülük</strong> derecelerim bulunmaktadır. Daha öncesinde RE/MAX’te danışmanlık yaptım; şu an TURYAP ATAŞEHİR İMZA bünyesinde
-            gayrimenkul danışmanı olarak hizmet veriyorum. Özellikle Fikirtepe, Kadıköy ve Ataşehir bölgelerinde uzmanlaştım. Amerika’da aldığım İngilizce eğitimi sayesinde
-            yabancı müşterilerle de rahatlıkla iletişim kurabiliyor, onların da Türkiye’de güvenle yatırım yapmalarına destek oluyorum.
+        <div data-i18n-panel="tr">
+          <div class="about-block">
+            <h2 class="about-h">Merhaba, ben Erol Erdoğar.</h2>
+            <p class="prose">
+              Yaklaşık 9 yıldır gayrimenkul sektöründe aktif olarak çalışıyorum. RE/MAX İmza’da <strong>2021, 2022 ve 2023</strong> yıllarında üst üste
+              <strong>işlem birinciliği</strong> elde ettim; <strong>Yıldızlar Kulübü</strong> üyesiyim. <strong>2019</strong> ve <strong>2020</strong> yıllarında işlem
+              hacminde <strong>ikinci</strong> ve <strong>üçüncülük</strong> derecelerim bulunmaktadır. Daha öncesinde RE/MAX’te danışmanlık yaptım; şu an TURYAP ATAŞEHİR İMZA bünyesinde
+              gayrimenkul danışmanı olarak hizmet veriyorum. Özellikle Fikirtepe, Kadıköy ve Ataşehir bölgelerinde uzmanlaştım. Amerika’da aldığım İngilizce eğitimi sayesinde
+              yabancı müşterilerle de rahatlıkla iletişim kurabiliyor, onların da Türkiye’de güvenle yatırım yapmalarına destek oluyorum.
+            </p>
+          </div>
+          <div class="about-block">
+            <h2 class="about-h">Çalışma yaklaşımım</h2>
+            <p class="prose">
+              Benim için bu iş sadece alım-satım yapmak değil; insanların doğru yatırım yapmasına yardımcı olmak ve onları güvenle ev sahibi yapmak.
+              Her müşterimin ihtiyacını dikkatle dinler, en doğru seçenekleri açık sözlülükle sunarım.
+              Çünkü bu sektörde en önemli şeyin güvenilir olmak ve her zaman dürüst iletişim kurmak olduğuna inanıyorum.
+            </p>
+          </div>
+          <div class="about-highlight">
+            <h2 class="about-h">TURYAP ATAŞEHİR İMZA Kalite politikası</h2>
+            <p>
+              TURYAP ATAŞEHİR İMZA olarak hizmet kalitesini; emlakla ilgili her türlü talepte seri, güvenilir, her iki tarafın yararına (alıcı-satıcı / kiracı-kiraya veren) nesnel çözümler üretmek şeklinde tarif eder.
+              Sistemde TuryapNet olarak adlandırılan veri bankamızın geliştirilerek sürekli güncel tutulması,
+              Müşterilere sunduğumuz hizmetin nitelik ve niceliksel anlamdaki gelişiminin sürekli kılınması,
+              Uzun vadeli ve başarılı bir güç birliğini sağlamak için başta üst yönetim olmak üzere tüm çalışanların gereken eğitimleri alarak hedefe odaklanması,
+              İstenilen dönemsel hedeflere en kısa zamanda, en düşük maliyetle, objektiflik ilkesinden ödün vermeden ulaşılması, müşteri istek ve beklentilerinin tamamının eksiksiz karşılanması,
+              Kalitenin, sistemin sürekli gelişmesi için olmazsa olmaz en dinamik süreç olarak kabul edilmesi,
+              Müşteri ihtiyaç ve şikayetlerini baz alarak sistemin değişen ve gelişen yeni koşul ve ihtiyaçlara adapte edilmesi,
+              Müşteri memnuniyetini en üst düzeyde tutarak, sektöründe hızlı ve güvenilir hizmetin verilmesi
+              Personel eğitimini sisteme yapılan yatırımlarla paralel tutarak gelişimin sağlıklı şekilde perçinlenmesi,
+              Firma içi işbirliğinde, vaatlerin yerine getirilmesinde (Müşteri/Tedarikçi ilişkisi) doğruluk ve dürüstlüğün esas alınması hizmet esaslarımızdır.
+              Şirketimiz tarafından sunulan tüm hizmetlerin verimliliği, güvenirliliği, kalitesi birinci derecede önem taşır. Bu husus, başta ben ve yöneticiler olmak üzere tüm çalışanlar tarafından uygulanmakta, desteklenmekte ve taahhüt edilmektedir.
+            </p>
+          </div>
+          <p class="prose" style="margin-top: 1.5rem">
+            Eğer siz de doğru yatırım yapmak, güvenilir bir danışmanla çalışmak ve hayalinizdeki eve ulaşmak istiyorsanız,
+            size yardımcı olmaktan memnuniyet duyarım.
           </p>
         </div>
-        <div class="about-block">
-          <h2 class="about-h">Çalışma yaklaşımım</h2>
-          <p class="prose">
-            Benim için bu iş sadece alım-satım yapmak değil; insanların doğru yatırım yapmasına yardımcı olmak ve onları güvenle ev sahibi yapmak.
-            Her müşterimin ihtiyacını dikkatle dinler, en doğru seçenekleri açık sözlülükle sunarım.
-            Çünkü bu sektörde en önemli şeyin güvenilir olmak ve her zaman dürüst iletişim kurmak olduğuna inanıyorum.
-          </p>
-        </div>
-        <div class="about-highlight">
-          <h2 class="about-h">TURYAP ATAŞEHİR İMZA Kalite politikası</h2>
 
-          <p>
-            TURYAP ATAŞEHİR İMZA olarak hizmet kalitesini; emlakla ilgili her türlü talepte seri, güvenilir, her iki tarafın yararına (alıcı-satıcı / kiracı-kiraya veren) nesnel çözümler üretmek şeklinde tarif eder.
-Sistemde TuryapNet olarak adlandırılan veri bankamızın geliştirilerek sürekli güncel tutulması,
-Müşterilere sunduğumuz hizmetin nitelik ve niceliksel anlamdaki gelişiminin sürekli kılınması,
-Uzun vadeli ve başarılı bir güç birliğini sağlamak için başta üst yönetim olmak üzere tüm çalışanların gereken eğitimleri alarak hedefe odaklanması,
-İstenilen dönemsel hedeflere en kısa zamanda, en düşük maliyetle, objektiflik ilkesinden ödün vermeden ulaşılması, müşteri istek ve beklentilerinin tamamının eksiksiz karşılanması,
-Kalitenin, sistemin sürekli gelişmesi için olmazsa olmaz en dinamik süreç olarak kabul edilmesi,
-Müşteri ihtiyaç ve şikayetlerini baz alarak sistemin değişen ve gelişen yeni koşul ve ihtiyaçlara adapte edilmesi,
-Müşteri memnuniyetini en üst düzeyde tutarak, sektöründe hızlı ve güvenilir hizmetin verilmesi
-Personel eğitimini sisteme yapılan yatırımlarla paralel tutarak gelişimin sağlıklı şekilde perçinlenmesi,
-Firma içi işbirliğinde, vaatlerin yerine getirilmesinde (Müşteri/Tedarikçi ilişkisi) doğruluk ve dürüstlüğün esas alınması hizmet esaslarımızdır.
-Şirketimiz tarafından sunulan tüm hizmetlerin verimliliği, güvenirliliği, kalitesi birinci derecede önem taşır. Bu husus, başta ben ve yöneticiler olmak üzere tüm çalışanlar tarafından uygulanmakta, desteklenmekte ve taahhüt edilmektedir.
+        <div data-i18n-panel="en" hidden>
+          <div class="about-block">
+            <h2 class="about-h">Hello — I'm Erol Erdoğar.</h2>
+            <p class="prose">
+              I have been practising real estate steadily for roughly nine years. At RE/MAX İmza I earned <strong>top producer honours in transaction volume three years in a row — 2021, 2022 and 2023</strong>; I belong to the <strong>Stars Club</strong> and logged <strong>second- and third-place volume finishes</strong> in <strong>2019 and 2020</strong>. Earlier in my career I consulted with RE/MAX; today I advise clients together with <strong>TURYAP ATAŞEHİR İMZA</strong>. My research and deal flow concentrate on <strong>Fikirtepe, Kadıköy and Ataşehir</strong>. Thanks to English-language education abroad, I work comfortably with international buyers and sellers who want clear, confident decisions in Türkiye.
+            </p>
+          </div>
+          <div class="about-block">
+            <h2 class="about-h">How I work</h2>
+            <p class="prose">
+              This job is rarely “just signatures” — it is helping households invest wisely and arrive home safely. Every brief starts with disciplined listening before I propose options without sugar-coating risks. Accountability and blunt honesty remain the behaviours I optimise for daily.
+            </p>
+          </div>
+          <div class="about-highlight">
+            <h2 class="about-h">TURYAP ATAŞEHİR İMZA — quality compass</h2>
+            <p>
+              We define institutional quality as quick, credible and objectively fair outcomes whenever property is negotiated — guarding buyers and sellers, tenants and landlords alike. The proprietary <strong>TuryapNet</strong> research spine is continuously upgraded so clients never inherit stale spreadsheets. Capability builds through formal training ladders for both leadership and field teams so annual targets chase lower costs without weakening independence of judgment — client expectations remain the compass, never the compromise itself. Listening loops translate feedback into sharper workflows whenever regulations shift. Satisfaction is pushed upward while turnaround times shorten nationwide. Personnel learning tracks investment in tooling so organisational maturity compounds instead of drifting. Collaboration — whether inward or toward clients or suppliers — is anchored by accuracy and goodwill. Efficiency, credibility and calibre govern everything we undertake; advisers and supervisors jointly reaffirm those principles.
+            </p>
+          </div>
+          <p class="prose" style="margin-top: 1.5rem">
+            If disciplined guidance from a reachable consultant fits how you intend to navigate this market, I welcome the introduction.
           </p>
         </div>
-        <p class="prose" style="margin-top: 1.5rem">
-          Eğer siz de doğru yatırım yapmak, güvenilir bir danışmanla çalışmak ve hayalinizdeki eve ulaşmak istiyorsanız,
-          size yardımcı olmaktan memnuniyet duyarım.
-        </p>
+
         <p style="margin-top: 2rem">
-          <a class="btn btn-primary" href="ilanlar.html">İlanlarımı inceleyin</a>
-          <a class="btn btn-wa js-wa" href="#">WhatsApp ile yazın</a>
+          <a class="btn btn-primary" href="ilanlar.html" data-i18n-text="about_cta_listings">İlanlarımı inceleyin</a>
+          <a class="btn btn-wa js-wa" href="#" data-i18n-text="whatsapp_cta">WhatsApp ile yazın</a>
         </p>
       </div>
     </section>
@@ -134,32 +164,33 @@ Firma içi işbirliğinde, vaatlerin yerine getirilmesinde (Müşteri/Tedarikçi
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <p>© <span id="yil"></span> <span class="js-advisor-name">Erol Erdoğar</span> · TURYAP ATAŞEHİR İMZA Gayrimenkul danışmanı</p>
+      <p>© <span id="yil"></span> <span class="js-advisor-name">Erol Erdoğar</span><span data-i18n-text="footer_role"> · TURYAP ATAŞEHİR İMZA Gayrimenkul danışmanı</span></p>
     </div>
   </footer>
 
-  <div id="about-photo-lightbox" class="about-lightbox" hidden role="dialog" aria-modal="true" aria-label="Görsel önizleme">
-    <button type="button" class="about-lightbox-close" aria-label="Kapat">×</button>
-    <button type="button" class="about-lightbox-nav about-lightbox-prev" aria-label="Önceki görsel"></button>
+  <div id="about-photo-lightbox" class="about-lightbox" hidden role="dialog" aria-modal="true" data-i18n-attr="aria-label:about_lightbox_label" aria-label="Görsel önizleme">
+    <button type="button" class="about-lightbox-close" data-i18n-attr="aria-label:close" aria-label="Kapat">×</button>
+    <button type="button" class="about-lightbox-nav about-lightbox-prev" data-i18n-attr="aria-label:rotator_prev" aria-label="Önceki görsel"></button>
     <div class="about-lightbox-stack">
       <img class="about-lightbox-img" src="" alt="" />
       <p class="about-lightbox-caption"></p>
       <p class="about-lightbox-counter" aria-live="polite"></p>
     </div>
-    <button type="button" class="about-lightbox-nav about-lightbox-next" aria-label="Sonraki görsel"></button>
+    <button type="button" class="about-lightbox-nav about-lightbox-next" data-i18n-attr="aria-label:rotator_next" aria-label="Sonraki görsel"></button>
   </div>
 
   <div class="contact-fab" data-contact-fab>
     <div class="contact-fab-panel" id="contact-fab-panel" role="group" aria-label="Hızlı iletişim"></div>
     <div class="contact-fab-toggle-wrap">
       <span class="contact-fab-pulse" aria-hidden="true"></span>
-      <button type="button" class="contact-fab-toggle" aria-expanded="false" aria-controls="contact-fab-panel" aria-label="İletişim menüsünü aç">
+      <button type="button" class="contact-fab-toggle" aria-expanded="false" aria-controls="contact-fab-panel" data-i18n-attr="aria-label:fab_open" aria-label="İletişim menüsünü aç">
         <span class="contact-fab-toggle-icon" aria-hidden="true"></span>
       </button>
     </div>
   </div>
 
   <script src="site-config.js"></script>
+  <script src="i18n.js"></script>
   <script src="hakkimda-data.js"></script>
   <script src="hakkimda.js"></script>
   <script src="script.js"></script>

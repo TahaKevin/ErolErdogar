@@ -763,12 +763,17 @@
     });
 
     document.querySelectorAll(".site-nav a[href]").forEach(function (a) {
-      var href = (a.getAttribute("href") || "").split("#")[0];
+      var href = (a.getAttribute("href") || "").split("#")[0].split("?")[0].trim().toLowerCase();
       var tail = href.split("/").pop();
-      if (tail === "index.html" || tail === "") a.textContent = t("nav_home");
-      else if (tail === "ilanlar.html") a.textContent = t("nav_listings");
-      else if (tail === "hakkimda.html") a.textContent = t("nav_about");
-      else if (tail === "iletisim.html") a.textContent = t("nav_contact");
+      if (tail === "index.html" || tail === "") {
+        a.textContent = t("nav_home");
+      } else if (tail === "ilanlar.html" || tail.indexOf("ilanlar") === 0) {
+        a.textContent = t("nav_listings");
+      } else if (tail === "hakkimda.html" || tail.indexOf("hakkimda") === 0) {
+        a.textContent = t("nav_about");
+      } else if (tail === "iletisim.html" || tail.indexOf("iletisim") === 0) {
+        a.textContent = t("nav_contact");
+      }
     });
 
     var waBtns = document.querySelectorAll(".js-wa:not(.wa-inline)");

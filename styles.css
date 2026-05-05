@@ -516,6 +516,7 @@ body {
   height: auto;
   aspect-ratio: 4/5;
   object-fit: cover;
+  object-position: center top;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   border: 1px solid var(--border);

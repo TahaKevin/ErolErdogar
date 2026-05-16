@@ -71,6 +71,120 @@
       .replace(/"/g, "&quot;");
   }
 
+  function shareIconSvg() {
+    return (
+      '<svg class="listing-share-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      '<path d="M12 3v11M8 7l4-4 4 4M5 21h14a2 2 0 002-2v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+      "</svg>"
+    );
+  }
+
+  function getListingShareUrl(l) {
+    return new URL("ilan-detay.html?id=" + encodeURIComponent(l.id), location.href).href;
+  }
+
+  function getListingShareText(l) {
+    var Ll = listingLoc(l);
+    var parts = [Ll.title || "", l.price || "", Ll.location || ""].filter(function (p) {
+      return String(p).trim();
+    });
+    return parts.join(" · ");
+  }
+
+  function showShareToast(message) {
+    var existing = document.getElementById("listing-share-toast");
+    if (existing) existing.remove();
+    var toast = document.createElement("div");
+    toast.id = "listing-share-toast";
+    toast.className = "listing-share-toast";
+    toast.setAttribute("role", "status");
+    toast.setAttribute("aria-live", "polite");
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    window.requestAnimationFrame(function () {
+      toast.classList.add("is-visible");
+    });
+    window.setTimeout(function () {
+      toast.classList.remove("is-visible");
+      window.setTimeout(function () {
+        toast.remove();
+      }, 280);
+    }, 2400);
+  }
+
+  function copyListingLink(url) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(url);
+    }
+    return new Promise(function (resolve, reject) {
+      try {
+        var ta = document.createElement("textarea");
+        ta.value = url;
+        ta.setAttribute("readonly", "");
+        ta.style.cssText = "position:fixed;left:-9999px;top:0;opacity:0";
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = document.execCommand("copy");
+        ta.remove();
+        if (ok) resolve();
+        else reject(new Error("copy failed"));
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  function shareListing(l) {
+    if (!l) return;
+    var url = getListingShareUrl(l);
+    var Ll = listingLoc(l);
+    var title = Ll.title || "Erol Erdoğar";
+    var text = getListingShareText(l);
+
+    if (navigator.share) {
+      navigator
+        .share({ title: title, text: text, url: url })
+        .catch(function (err) {
+          if (err && err.name === "AbortError") return;
+          copyListingLink(url)
+            .then(function () {
+              showShareToast(tUi("listing_share_copied"));
+            })
+            .catch(function () {
+              showShareToast(tUi("listing_share_fail"));
+            });
+        });
+      return;
+    }
+
+    copyListingLink(url)
+      .then(function () {
+        showShareToast(tUi("listing_share_copied"));
+      })
+      .catch(function () {
+        showShareToast(tUi("listing_share_fail"));
+      });
+  }
+
+  function renderShareButton(l, opts) {
+    opts = opts || {};
+    var compact = !!opts.compact;
+    var cls = "listing-share-btn js-listing-share" + (compact ? " listing-share-btn--compact" : "");
+    var label = escapeHtml(tUi("listing_share"));
+    return (
+      '<button type="button" class="' +
+      cls +
+      '" data-listing-id="' +
+      escapeHtml(l.id) +
+      '" aria-label="' +
+      label +
+      '">' +
+      shareIconSvg() +
+      (compact ? "" : '<span class="listing-share-label">' + label + "</span>") +
+      "</button>"
+    );
+  }
+
   function formatDescriptionHtml(text) {
     if (!text || !String(text).trim()) return "";
     return escapeHtml(text).replace(/\n/g, "<br />");
@@ -78,13 +192,38 @@
 
   function youtubeEmbedUrl(url) {
     var u = String(url || "").trim();
-    if (!u) return "";
+    if (!u || /\.mp4(\?|#|$)/i.test(u)) return "";
     if (u.indexOf("youtube.com/embed/") !== -1) {
       return u.split("&")[0];
     }
     var m = u.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/);
     if (m) return "https://www.youtube.com/embed/" + m[1];
-    return u;
+    if (u.indexOf("youtube.com") !== -1 || u.indexOf("youtu.be") !== -1) return "";
+    return "";
+  }
+
+  function getListingMp4Url(l) {
+    if (!l) return "";
+    var mp4 = String(l.videoMp4 || "").trim();
+    if (mp4) return mp4;
+    var raw = String(l.videoUrl || "").trim();
+    if (/\.mp4(\?|#|$)/i.test(raw)) return raw;
+    return "";
+  }
+
+  function renderMp4Hero(l) {
+    var src = getListingMp4Url(l);
+    if (!src) return "";
+    var L = listingLoc(l);
+    return (
+      '<div class="listing-mp4-hero">' +
+      '<div class="listing-video-frame listing-video-frame--mp4">' +
+      '<video class="listing-mp4-player" src="' +
+      escapeHtml(src) +
+      '" controls playsinline preload="metadata" title="' +
+      escapeHtml(L.title || tUi("listing_video")) +
+      '"></video></div></div>'
+    );
   }
 
   function listingById(id) {
@@ -233,6 +372,7 @@
     var mainSrc = photos[0] || "";
     var badgeClass = l.type === "kiralik" ? "listing-badge--rent" : "listing-badge--sale";
     var badgeText = l.type === "kiralik" ? tUi("listing_badge_rent") : tUi("listing_badge_sale");
+    var mp4Hero = renderMp4Hero(l);
     var videoRaw = String(l.videoUrl || "").trim();
     var embed = youtubeEmbedUrl(videoRaw);
     var hasVideo = !!embed;
@@ -286,6 +426,7 @@
       '">' +
       '<div class="listing-detail-gallery">' +
       metaHtml +
+      mp4Hero +
       '<div class="listing-gallery-view">' +
       '<button type="button" class="listing-nav listing-nav--prev" data-listing-id="' +
       escapeHtml(l.id) +
@@ -319,6 +460,7 @@
       escapeHtml(tUi("listing_photo_big")) +
       "</button>" +
       toolbarVideo +
+      renderShareButton(l, { compact: true }) +
       "</div>" +
       videoPanel +
       (realPhotos.length > 1 ? renderThumbsCarousel(realPhotos, l.id) : "") +
@@ -345,7 +487,9 @@
       escapeHtml(tUi("listing_whatsapp")) +
       '</a><a class="btn btn-primary js-tel" href="#">' +
       escapeHtml(tUi("listing_call")) +
-      "</a></div>" +
+      "</a>" +
+      renderShareButton(l) +
+      "</div>" +
       "</div>" +
       "</article>"
     );
@@ -440,6 +584,8 @@
     return (
       '<article class="listing-card listing-card--ilanlar listing-card--row" data-type="' +
       escapeHtml(l.type) +
+      '" data-listing-id="' +
+      escapeHtml(l.id) +
       '">' +
       '<a href="ilan-detay.html?id=' +
       encodeURIComponent(l.id) +
@@ -455,13 +601,29 @@
       "</h3>" +
       priceRow +
       renderCardIconRow(l) +
-      "</div></a></article>"
+      "</div></a>" +
+      renderShareButton(l, { compact: true }) +
+      "</article>"
     );
+  }
+
+  function bindListingShareButtons(root) {
+    if (!root) return;
+    root.addEventListener("click", function (e) {
+      var btn = e.target.closest(".js-listing-share");
+      if (!btn || !root.contains(btn)) return;
+      e.preventDefault();
+      e.stopPropagation();
+      var id = btn.getAttribute("data-listing-id");
+      var Lshare = id ? listingById(id) : null;
+      if (Lshare) shareListing(Lshare);
+    });
   }
 
   if (listRoot) {
     listRoot.innerHTML =
       '<div class="listing-grid listing-grid--ilanlar">' + ILANLAR_DATA.map(renderListCard).join("") + "</div>";
+    bindListingShareButtons(listRoot);
   }
 
   var lightbox = document.getElementById("listing-lightbox");
@@ -754,6 +916,7 @@
       var art = detailRoot.querySelector(".listing-detail");
       if (art) art.dataset.photoIndex = "0";
       bindGalleryInteractions(detailRoot);
+      bindListingShareButtons(detailRoot);
       initListingThumbCarousels(detailRoot);
     }
   }

@@ -1141,6 +1141,24 @@ body {
   border: 0;
 }
 
+.listing-mp4-hero {
+  margin-bottom: 0.85rem;
+}
+
+.listing-video-frame--mp4 {
+  background: #0a1628;
+}
+
+.listing-mp4-player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: contain;
+  background: #0a1628;
+}
+
 /* Küçük resimler: ~4 adet görünür, yatay kaydırma + oklar */
 .listing-thumbs-carousel {
   margin-top: 0.65rem;
@@ -1756,6 +1774,130 @@ body.listing-lightbox-open {
   gap: 0.65rem;
 }
 
+/* İlan paylaş */
+.listing-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(11, 78, 162, 0.35);
+  background: #fff;
+  color: var(--primary);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(11, 78, 162, 0.12);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.listing-share-btn:hover {
+  background: var(--primary-soft);
+  border-color: rgba(11, 78, 162, 0.5);
+  box-shadow: 0 4px 14px rgba(11, 78, 162, 0.16);
+}
+
+.listing-share-btn:active {
+  transform: scale(0.97);
+}
+
+.listing-share-btn--compact {
+  min-height: 0;
+  min-width: 2.75rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.listing-share-btn--compact .listing-share-label {
+  display: none;
+}
+
+.listing-share-ico {
+  flex-shrink: 0;
+  display: block;
+}
+
+.listing-card--ilanlar {
+  position: relative;
+}
+
+.listing-card--ilanlar .listing-share-btn--compact {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 4;
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+}
+
+.listing-gallery-toolbar .listing-share-btn--compact {
+  min-width: 2.5rem;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+}
+
+.listing-gallery-toolbar .listing-share-btn--compact .listing-share-label {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .listing-cta-row .listing-share-btn:not(.listing-share-btn--compact) {
+    flex: 1 1 100%;
+    min-height: 3rem;
+    font-size: 1rem;
+  }
+
+  .listing-card--ilanlar .listing-share-btn--compact {
+    width: 3rem;
+    height: 3rem;
+    min-width: 3rem;
+    top: 0.4rem;
+    right: 0.4rem;
+  }
+
+  .listing-gallery-toolbar .listing-share-btn--compact {
+    min-width: 2.85rem;
+    min-height: 2.85rem;
+    padding: 0.5rem;
+  }
+}
+
+.listing-share-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  z-index: 12000;
+  max-width: min(92vw, 22rem);
+  padding: 0.75rem 1.1rem;
+  border-radius: 12px;
+  background: rgba(20, 28, 40, 0.94);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.listing-share-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
 /* Güven şeridi */
 .trust-row {
   display: grid;
@@ -1806,6 +1948,29 @@ body.listing-lightbox-open {
 .testimonial footer {
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+.reviews-home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.reviews-home-actions .btn {
+  min-height: 2.75rem;
+}
+
+@media (max-width: 520px) {
+  .reviews-home-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .reviews-home-actions .btn {
+    width: 100%;
+  }
 }
 
 .review-carousel {
@@ -1921,6 +2086,263 @@ button.review-photo-card.review-photo-card--zoom:focus-visible {
   text-align: center;
   color: var(--text-muted);
   margin: 2rem 0;
+}
+
+/* —— Müşteri görüşleri sayfası —— */
+.reviews-page-body {
+  background: var(--bg);
+}
+
+.reviews-page-main {
+  padding-bottom: 2.5rem;
+}
+
+.reviews-page-hero {
+  padding-bottom: 1.25rem;
+}
+
+.reviews-page-hero h1 {
+  margin: 0 0 0.5rem;
+}
+
+.reviews-page-hero .page-hero-lead {
+  margin: 0;
+  max-width: 36rem;
+}
+
+.reviews-section-label {
+  margin: 0 0 1rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* WhatsApp ile görüş gönder */
+.reviews-share-section {
+  padding: 0 0 2.5rem;
+}
+
+.reviews-share-card {
+  padding: 1.5rem 1.6rem;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(11, 78, 162, 0.12);
+  box-shadow: 0 8px 32px rgba(11, 78, 162, 0.08);
+}
+
+.reviews-share-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.35rem;
+  color: var(--primary);
+}
+
+.reviews-share-lead {
+  margin: 0 0 1.15rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.reviews-share-steps {
+  margin: 0 0 1.35rem;
+  padding: 0 0 0 1.2rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.reviews-share-steps li {
+  margin-bottom: 0.35rem;
+}
+
+.reviews-share-steps li::marker {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.reviews-submit-form {
+  margin: 0;
+}
+
+.reviews-form-field {
+  margin-bottom: 0.9rem;
+}
+
+.reviews-form-field label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.reviews-form-field input,
+.reviews-form-field textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--text);
+  background: #fafbfc;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.reviews-form-field textarea {
+  resize: vertical;
+  min-height: 6.5rem;
+}
+
+.reviews-form-field input:focus,
+.reviews-form-field textarea:focus {
+  outline: none;
+  background: #fff;
+  border-color: rgba(37, 211, 102, 0.55);
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.15);
+}
+
+.reviews-form-status {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.reviews-form-status.is-error {
+  background: rgba(180, 40, 40, 0.08);
+  color: #8b2020;
+  border: 1px solid rgba(180, 40, 40, 0.2);
+}
+
+.reviews-form-submit {
+  width: 100%;
+  min-height: 3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+}
+
+/* Yayınlanan görüşler */
+.reviews-published-section {
+  padding: 0 0 2.5rem;
+}
+
+.reviews-text-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.review-quote-card {
+  margin: 0;
+  padding: 1.1rem 1.2rem 1.1rem 1.35rem;
+  border-radius: 12px;
+  background: #fff;
+  border-left: 4px solid var(--primary);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+}
+
+.review-quote-card-text {
+  margin: 0 0 0.75rem;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.review-quote-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem 0.75rem;
+  font-size: 0.84rem;
+}
+
+.review-quote-card-name {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.review-quote-card-date {
+  color: var(--text-muted);
+}
+
+.reviews-text-empty,
+.reviews-photo-empty {
+  margin: 0;
+  padding: 1.25rem;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  border: 1px dashed var(--border);
+}
+
+/* Fotoğraf ızgarası */
+.reviews-photos-section {
+  padding-bottom: 1rem;
+}
+
+.reviews-photos-lead {
+  margin: -0.5rem 0 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.reviews-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.65rem;
+}
+
+.reviews-photo-tile {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: zoom-in;
+  background: rgba(30, 58, 95, 0.06);
+  aspect-ratio: 3 / 4;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reviews-photo-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.reviews-photo-tile:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.reviews-photo-tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 640px) {
+  .reviews-photo-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .reviews-share-card {
+    padding: 1.15rem;
+  }
 }
 
 @media (max-width: 1024px) {

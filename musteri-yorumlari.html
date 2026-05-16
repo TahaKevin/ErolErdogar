@@ -3,18 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Müşteri görüşleri ve ekran görüntüleri — Erol Erdoğar, TURYAP ATAŞEHİR İMZA." />
+  <meta name="description" content="Müşteri görüşleri — Erol Erdoğar, TURYAP ATAŞEHİR İMZA." />
   <meta property="og:locale" content="tr_TR" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Erol Erdoğar | TURYAP ATAŞEHİR İMZA" />
   <meta property="og:title" content="Müşteri Görüşleri | Erol Erdoğar" />
-  <meta property="og:description" content="Erol Erdoğar için müşteri geri bildirimlerini ve yorum görsellerini inceleyin." />
+  <meta property="og:description" content="Müşteri geri bildirimleri ve görüş paylaşımı." />
   <meta property="og:image" content="assets/seo-erol-erdogar.png" />
-  <meta property="og:image:alt" content="Erol Erdoğar müşteri görüşleri sayfası görseli" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Müşteri Görüşleri | Erol Erdoğar" />
-  <meta name="twitter:description" content="Müşteri yorumları ve referans görselleri." />
-  <meta name="twitter:image" content="assets/seo-erol-erdogar.png" />
   <title>Müşteri görüşleri | Erol Erdoğar</title>
   <link rel="icon" type="image/png" href="assets/seo-erol-erdogar.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="reviews-page-body">
   <a class="skip-link" href="#icerik">İçeriğe geç</a>
   <header class="site-header">
     <div class="wrap header-inner">
@@ -47,21 +43,56 @@
     </div>
   </header>
 
-  <main id="icerik">
-    <header class="page-hero page-hero--detail">
-      <div class="wrap">
+  <main id="icerik" class="reviews-page-main">
+    <header class="page-hero page-hero--detail reviews-page-hero">
+      <div class="wrap narrow">
         <p class="detail-back"><a href="index.html" class="detail-back-link" data-i18n-text="reviews_back_home">← Ana sayfaya dön</a></p>
-        <div class="page-hero-head">
-          <div class="page-hero-heading">
-            <h1 data-i18n-text="reviews_page_h1">Müşteri görüşleri</h1>
-            <p class="page-hero-lead" data-i18n-text="reviews_page_lead">Görselleri büyütebilir, oklar veya kaydırma ile aralarında gezebilirsiniz.</p>
-          </div>
-        </div>
+        <h1 data-i18n-text="reviews_page_h1">Müşteri görüşleri</h1>
+        <p class="page-hero-lead" data-i18n-text="reviews_page_lead">Onaylı görüşleri okuyabilir; kendi deneyiminizi formu doldurup WhatsApp ile iletebilirsiniz.</p>
       </div>
     </header>
 
-    <section class="section section--tight reviews-page-section">
-      <div class="wrap listing-full-width" id="reviews-gallery-root" aria-live="polite"></div>
+    <section class="reviews-share-section" aria-labelledby="reviews-form-heading">
+      <div class="wrap narrow">
+        <div class="reviews-share-card">
+          <h2 id="reviews-form-heading" data-i18n-text="reviews_form_heading">Görüşünüzü paylaşın</h2>
+          <p class="reviews-share-lead" data-i18n-text="reviews_form_intro">Formu doldurun, WhatsApp ile bize iletin. Onayladıktan sonra bu sayfaya ekleriz.</p>
+          <ol class="reviews-share-steps">
+            <li data-i18n-text="reviews_step_1">Adınızı ve görüşünüzü yazın</li>
+            <li data-i18n-text="reviews_step_2">WhatsApp ile gönderin</li>
+            <li data-i18n-text="reviews_step_3">Onay sonrası sitede yayınlanır</li>
+          </ol>
+          <form id="reviews-submit-form" class="reviews-submit-form" novalidate>
+            <div class="reviews-form-field">
+              <label for="review-name" data-i18n-text="reviews_form_name_label">Adınız</label>
+              <input type="text" id="review-name" name="name" autocomplete="name" maxlength="80" required data-i18n-attr="placeholder:reviews_form_name_ph" placeholder="Örn. Ayşe K." />
+            </div>
+            <div class="reviews-form-field">
+              <label for="review-comment" data-i18n-text="reviews_form_comment_label">Görüşünüz</label>
+              <textarea id="review-comment" name="comment" rows="4" maxlength="600" required data-i18n-attr="placeholder:reviews_form_comment_ph" placeholder="Deneyiminizi kısaca yazın…"></textarea>
+            </div>
+            <p id="reviews-form-status" class="reviews-form-status" role="alert" hidden></p>
+            <button type="submit" class="btn btn-wa reviews-form-submit">
+              <span data-i18n-text="reviews_form_submit">WhatsApp ile gönder</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews-published-section" aria-labelledby="reviews-text-heading">
+      <div class="wrap narrow">
+        <h2 id="reviews-text-heading" class="reviews-section-label" data-i18n-text="reviews_text_heading">Yayınlanan görüşler</h2>
+        <div id="reviews-text-root" class="reviews-text-list" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="reviews-photos-section" aria-labelledby="reviews-photos-heading">
+      <div class="wrap">
+        <h2 id="reviews-photos-heading" class="reviews-section-label" data-i18n-text="reviews_photos_heading">Müşteri mesajları</h2>
+        <p class="reviews-photos-lead" data-i18n-text="reviews_photos_intro">Ekran görüntülerine dokunarak büyütebilirsiniz.</p>
+        <div id="reviews-gallery-root" class="reviews-photo-grid" aria-live="polite"></div>
+      </div>
     </section>
   </main>
 
@@ -73,12 +104,12 @@
 
   <div id="listing-lightbox" class="listing-lightbox" role="dialog" aria-modal="true" data-i18n-attr="aria-label:lightbox_photo_label" aria-label="Fotoğraf büyütülmüş görünüm" hidden>
     <button type="button" class="listing-lightbox-close" aria-label="Kapat" data-i18n-attr="aria-label:close">&times;</button>
-    <button type="button" class="listing-lightbox-nav listing-lightbox-prev" data-i18n-attr="aria-label:lightbox_prev_ph" aria-label="Önceki fotoğraf"></button>
+    <button type="button" class="listing-lightbox-nav listing-lightbox-prev" data-i18n-attr="aria-label:lightbox_prev_ph" aria-label="Önceki"></button>
     <div class="listing-lightbox-stack">
       <img class="listing-lightbox-img" src="" alt="" />
       <p class="listing-lightbox-counter" aria-live="polite"></p>
     </div>
-    <button type="button" class="listing-lightbox-nav listing-lightbox-next" data-i18n-attr="aria-label:lightbox_next_ph" aria-label="Sonraki fotoğraf"></button>
+    <button type="button" class="listing-lightbox-nav listing-lightbox-next" data-i18n-attr="aria-label:lightbox_next_ph" aria-label="Sonraki"></button>
   </div>
 
   <div class="contact-fab" data-contact-fab>

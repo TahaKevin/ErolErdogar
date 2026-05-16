@@ -166,4 +166,22 @@ var ILANLAR_EN_BY_ID = {
     description:
       "446 m² residential-zoned parcel beside Yalova's expanding Kazımiye axis and the second-phase TOKİ delivery (housing, retail and mosque slated with road links to the centre — due per project calendar). Potential to combine with the adjoining parcel for roughly 860 m²; zoning allows approx. three floors at 0.75 FAR leveraging grade difference for extra storey potential (verify with municipalities). Nearby school projects add long-term uplift. Guidance: TURYAP ATAŞEHİR İMZA – Erol Erdoğar.",
   },
+  "23": {
+    title:
+      "Kadıköy Baysaş 216 Residence — furnished corner 2+1 flat for sale — opportunity unit",
+    location: "Istanbul / Kadıköy / Dumlupınar neighborhood",
+    cardLocationShort: "Istanbul / Kadıköy",
+    listingDate: "14 May 2026",
+    description:
+      "Corner 2+1 for sale on the 16th floor at Baysaş Istanbul 216 Residence in Kadıköy Dumlupınar — 90 m² gross and 70 m² net with an efficient layout. Central heating (heat meter), open-plan American kitchen, lift and indoor/outdoor parking within the complex. Well placed on the rising Fikirtepe–Dumlupınar axis with strong transit and E-5 links. Mortgage-eligible, condominium title, currently vacant. Viewings and details: sole representative TURYAP ATAŞEHİR İMZA – Erol Erdoğar.",
+  },
+  "24": {
+    title:
+      "Kadıköy Pırlanta Residence — balcony 3+1 flat for sale — opportunity unit",
+    location: "Istanbul / Kadıköy / Fikirtepe neighborhood",
+    cardLocationShort: "Istanbul / Kadıköy",
+    listingDate: "15 May 2026",
+    description:
+      "Balconied 3+1 for sale on the 7th floor at Pırlanta Göztepe Residence in Kadıköy Fikirtepe — 108 m² gross and 89 m² net with a bright, practical layout. Central heating (heat meter), separate kitchen, two bathrooms and balcony within the complex. Strong location on the rising Fikirtepe axis near the Göztepe E-5 corridor and transit links. Mortgage-eligible, condominium title, currently tenanted. Viewings and details: sole representative TURYAP ATAŞEHİR İMZA – Erol Erdoğar.",
+  },
 };

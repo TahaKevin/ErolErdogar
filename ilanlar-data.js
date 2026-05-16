@@ -7,9 +7,11 @@
  * İsterseniz doğrudan internet adresi (https://...) da yazabilirsiniz.
  *
  * VİDEO:
- *   YouTube: "Paylaş" → "Yerleştir" → iframe içindeki src adresini kopyalayın
- *   veya normal izleme linki (youtube.com/watch?v=... / youtu.be/...)
- *   Boş bırakırsanız "Video" düğmesi gösterilmez.
+ *   YouTube (videoUrl): "Paylaş" → "Yerleştir" → iframe src veya watch?v= / youtu.be linki.
+ *     Detay sayfasında "Video" düğmesiyle açılır.
+ *   MP4 (videoMp4): assets/ilan-videolari/dosya.mp4 veya https://... adresi.
+ *     Detay sayfasında galerinin en üstünde (fotoğraflardan önce) oynatılır.
+ *   İkisi de boşsa video gösterilmez.
  *
  * Satılık ve kiralık ilanlar aynı alanları kullanır; sadece "type" ve rozet metni farklıdır.
  *
@@ -192,6 +194,10 @@ var ILANLAR_DATA = [
     cardArea: "160 m²",
     cardRooms: "1",
     photos: [
+
+
+
+    
       "assets/ilan-fotograflari/fortisinanli/2.png",
       "assets/ilan-fotograflari/fortisinanli/1.png",
       "assets/ilan-fotograflari/fortisinanli/3.png",
@@ -222,6 +228,7 @@ var ILANLAR_DATA = [
     mapsEmbedUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.473134252605!2d29.043812775917264!3d40.993016371352645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac78a9ee8ef69%3A0xedd0029a7a5b6761!2zRm9ydGlzIFNpbmFubMSxIFllbmkgS2FkxLFrw7Z5!5e0!3m2!1sen!2str!4v1776169399319!5m2!1sen!2str",
     videoUrl: "",
+    videoMp4: "assets/ilan-fotograflari/fortisinanli/final.mp4",
     description:
       "KADIKÖY FİKİRTEPE – FORTİS SİNANLI REZİDANS 160 m² SATILIK | YÜKSEK TABELA DEĞERLİ FIRSAT DÜKKAN.İstanbul’un yükselen değeri Fikirtepe’de, prestijli Fortis Sinanlı Rezidans projesinde yer alan bu özel dükkan, yatırım ve ticaret için büyük fırsat sunuyor. 📍 Konum Avantajı: Ana cadde ve AVM bağlantılı cephe,Yoğun yaya ve araç trafiği,Toplu ulaşıma son derece yakın, ulaşım sorunu yok🏢 Özellikler:160 m² geniş kullanım alanı,Yüksek tavanlı, ferah mimari,AVM & rezidans konseptiyle prestijli çevre,Yüksek tabela ve görünürlük değeri,İstanbul’un kalbinin attığı bu bölgede, işinizi bir adım öne taşıyacak konumda yerinizi hemen alın.⏳ Fırsatı kaçırmayın, zaman daralıyor!📞 Detaylı bilgi ve randevu için:TURYAP ATAŞEHİR İMZA · Erol Erdoğar",
     specs: [
@@ -242,66 +249,7 @@ var ILANLAR_DATA = [
 
     ]
   },
-  {
-    id: "7",
-    type: "kiralik",
-    title: "Kadıköy Fortis Sinanlı Rezidans 160 M2 Kiralık Fırsat Dükkan",
-    price: "159.500 TL ",
-    location: "İstanbul / Kadıköy / Fikirtepe Mah.",
-    listingNo: "",
-    listingDate: "31 Mart 2026",
-    cardLocationShort: "İstanbul / Kadıköy",
-    cardArea: "160 m²",
-    cardRooms: "1",
-    photos: [
-      "assets/ilan-fotograflari/fortisinanli/2.png",
-      "assets/ilan-fotograflari/fortisinanli/1.png",
-      "assets/ilan-fotograflari/fortisinanli/3.png",
-      "assets/ilan-fotograflari/fortisinanli/4.png",
-      "assets/ilan-fotograflari/fortisinanli/5.png",
-      "assets/ilan-fotograflari/fortisinanli/6.png",
-      "assets/ilan-fotograflari/fortisinanli/7.png",
-      "assets/ilan-fotograflari/fortisinanli/8.png",
-      "assets/ilan-fotograflari/fortisinanli/9.png",
-      "assets/ilan-fotograflari/fortisinanli/10.png",
-      "assets/ilan-fotograflari/fortisinanli/11.png",
-      "assets/ilan-fotograflari/fortisinanli/12.png",
-      "assets/ilan-fotograflari/fortisinanli/13.png",
-      "assets/ilan-fotograflari/fortisinanli/14.png",
-      "assets/ilan-fotograflari/fortisinanli/15.png",
-      "assets/ilan-fotograflari/fortisinanli/16.png",
-      "assets/ilan-fotograflari/fortisinanli/17.png",
-      "assets/ilan-fotograflari/fortisinanli/18.png",
-      "assets/ilan-fotograflari/fortisinanli/19.png",
-      "assets/ilan-fotograflari/fortisinanli/20.png",
-      "assets/ilan-fotograflari/fortisinanli/21.png",
-      "assets/ilan-fotograflari/fortisinanli/22.png",
-      "assets/ilan-fotograflari/fortisinanli/23.png",
-      "assets/ilan-fotograflari/fortisinanli/24.png",
-      "assets/ilan-fotograflari/fortisinanli/25.png",
-    ],
-    mapsEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.473134252605!2d29.043812775917264!3d40.993016371352645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac78a9ee8ef69%3A0xedd0029a7a5b6761!2zRm9ydGlzIFNpbmFubMSxIFllbmkgS2FkxLFrw7Z5!5e0!3m2!1sen!2str!4v1776169399319!5m2!1sen!2str",
-    videoUrl: "",
-    description:
-      "KADIKÖY FİKİRTEPE – FORTİS SİNANLI REZİDANS 160 m² KIRALIK | YÜKSEK TABELA DEĞERLİ FIRSAT DÜKKAN.İstanbul’un yükselen değeri Fikirtepe’de, prestijli Fortis Sinanlı Rezidans projesinde yer alan bu özel dükkan, yatırım ve ticaret için büyük fırsat sunuyor. 📍 Konum Avantajı: Ana cadde ve AVM bağlantılı cephe,Yoğun yaya ve araç trafiği,Toplu ulaşıma son derece yakın, ulaşım sorunu yok🏢 Özellikler:160 m² geniş kullanım alanı,Yüksek tavanlı, ferah mimari,AVM & rezidans konseptiyle prestijli çevre,Yüksek tabela ve görünürlük değeri,İstanbul’un kalbinin attığı bu bölgede, işinizi bir adım öne taşıyacak konumda yerinizi hemen alın.⏳ Fırsatı kaçırmayın, zaman daralıyor!📞 Detaylı bilgi ve randevu için:TURYAP ATAŞEHİR İMZA · Erol Erdoğar",
-    specs: [
-      { label: "Kategori", value: "İş Yeri" },
-      { label: "Durumu", value: "Kiralık" },
-      { label: "Türü", value: "Dükkan & Mağaza" },
-      { label: "m² (Net) ", value: "160" },
-      { label: "Bölüm & Oda Sayısı", value: "1" },
-      { label: "Bina yaşı", value: "4" },
-      { label: "Isıtma", value: "Klima" },
-      { label: "Aidat (TL)", value: "9.750" },
-      { label: "Krediye Uygun", value: "Evet" },
-      { label: "Tapu Durumu", value: "Kat Mülkiyetli" },
-      { label: "Kimden", value: "Emlak Ofisinden" },
-      { label: "Site Adı", value: "Fortis Sinanlı Rezidans" },
-      { label: "Takas", value: "Hayır" },
-    ],
-  },
-
+  
   {
     id: "3",
     type: "kiralik",
@@ -636,7 +584,7 @@ var ILANLAR_DATA = [
     id: "11",
     type: "kiralik",
     title: "Dumankaya İkon Rezidans Eşyalı 78 m² Kiralık 2+1 Fırsat Daire",
-    price: "49.900 TL ",
+    price: "48.500 TL ",
     location: "İstanbul / Ataşehir / Örnek Mh.",
     listingDate: "12 Nisan 2026",
     cardLocationShort: "İstanbul / Ataşehir",
@@ -1301,7 +1249,6 @@ var ILANLAR_DATA = [
     title: "Ataşehir Esatpaşa Nestiva Satılık 150M2 Manzaralı 3+1 Dublex",
     price: "15.750.000 TL",
     location: "İstanbul / Ataşehir / Esatpaşa Mh.",
-    listingNo: "1315223892",
     listingDate: "05 Mayıs 2026",
     cardLocationShort: "İstanbul / Ataşehir",
     cardArea: "150 m²",
@@ -1398,7 +1345,6 @@ var ILANLAR_DATA = [
     title: "Kadıköy Fortis Sinanlı Rezidans Balkonlu Kiralık 1+0 Stüdyo Daire",
     price: "32.500 TL",
     location: "İstanbul / Kadıköy / Fikirtepe Mah.",
-    listingNo: "1241680125",
     listingDate: "07 Mayıs 2026",
     cardLocationShort: "İstanbul / Kadıköy",
     cardArea: "49 m²",
@@ -1458,6 +1404,141 @@ var ILANLAR_DATA = [
       { label: "Enerji Kimlik Belgesi", value: "Belirtilmemiş" },
       { label: "Tapu Durumu", value: "Kat Mülkiyetli" },
       { label: "Kimden", value: "Emlak Ofisinden" },
+    ],
+  },
+  {
+    id: "23",
+    type: "satilik",
+    title: "Kadıköy Baysaş 216 Rezidans Eşyalı Satılık 2+1 Fırsat Köşe Daire",
+    price: "12.250.000 TL",
+    location: "İstanbul / Kadıköy / Dumlupınar Mh.",
+    listingDate: "14 Mayıs 2026",
+    cardLocationShort: "İstanbul / Kadıköy",
+    cardArea: "90 m²",
+    cardRooms: "2+1",
+    photos: [
+
+    "assets/ilan-fotograflari/216/1.png",
+    "assets/ilan-fotograflari/216/2.png",
+    "assets/ilan-fotograflari/216/3.png",
+    "assets/ilan-fotograflari/216/4.png",
+    "assets/ilan-fotograflari/216/5.png",
+    "assets/ilan-fotograflari/216/6.png",
+    "assets/ilan-fotograflari/216/7.png",
+    "assets/ilan-fotograflari/216/8.png",
+    "assets/ilan-fotograflari/216/9.png",
+    "assets/ilan-fotograflari/216/10.png",
+    "assets/ilan-fotograflari/216/11.png",
+    "assets/ilan-fotograflari/216/12.png",
+    "assets/ilan-fotograflari/216/13.png",
+    "assets/ilan-fotograflari/216/14.png",
+    "assets/ilan-fotograflari/216/15.png",
+    "assets/ilan-fotograflari/216/16.png",
+    "assets/ilan-fotograflari/216/17.png",
+
+
+
+    ],
+    mapsEmbedUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1505.7009228110846!2d29.056918190672775!3d40.994577004989985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac7edf6181ec5%3A0xa301cfeacb8d4a91!2sBaysa%C5%9F%20%C4%B0stanbul%20216%20Deluxe%20Residence!5e0!3m2!1sen!2str!4v1778933986004!5m2!1sen!2str",
+    videoUrl: "",
+    description:
+      "Kadıköy Fikirtepe’de, Baysaş İstanbul 216 projesinde yer alan satılık 2+1 fırsat daire; Millet Bahçesi ve Adalar manzarasına sahip özel blokta bulunmaktadır. Toplu ulaşıma kolay erişim sağlayan projede yer alan full eşyalı dairemiz, kare ve kullanışlı oda planıyla konforlu bir yaşam sunmaktadır. Bölgede dönüşüm çalışmaları hızla tamamlanmakta olup Fikirtepe’nin yükselen değerlerinden biri olan İstanbul 216 projesinde bu fiyat seviyelerinde fırsat bulmak giderek zorlaşmaktadır. Projede 4.500 m² yeşil alan, sauna, buhar odası, hamam, açık ve kapalı yüzme havuzu, fitness salonu, çocuk oyun alanları, açık/kapalı otopark ve 7/24 güvenlik gibi sosyal olanaklar bulunmaktadır. Ayrıca Ünalan Metro, Uzunçayır Metrobüs ve İETT duraklarına yürüme mesafesinde merkezi bir konuma sahiptir. Detaylı bilgi ve randevu için: Tek Yetkili Turyap Ataşehir İmza – Erol Erdoğar.",
+    specs: [
+      { label: "İlan No", value: "1313961115" },
+      { label: "İlan Tarihi", value: "14 Mayıs 2026" },
+      { label: "Emlak tipi", value: "Satılık daire" },
+      { label: "m² (Brüt / Net)", value: "90 / 70" },
+      { label: "Oda sayısı", value: "2+1" },
+      { label: "Bina yaşı", value: "6–10 arası" },
+      { label: "Bulunduğu kat", value: "16" },
+      { label: "Kat sayısı", value: "30 ve üzeri" },
+      { label: "Isıtma", value: "Merkezi (Pay Ölçer)" },
+      { label: "Banyo Sayısı", value: "1" },
+      { label: "Mutfak", value: "Açık (Amerikan)" },
+      { label: "Balkon", value: "Yok" },
+      { label: "Asansör", value: "Var" },
+      { label: "Otopark", value: "Açık & Kapalı Otopark" },
+      { label: "Eşyalı", value: "Hayır" },
+      { label: "Kullanım Durumu", value: "Boş" },
+      { label: "Site İçerisinde", value: "Evet" },
+      { label: "Site Adı", value: "İstanbul 216" },
+      { label: "Aidat (TL)", value: "Belirtilmemiş" },
+      { label: "Krediye Uygun", value: "Evet" },
+      { label: "Enerji Kimlik Belgesi", value: "Belirtilmemiş" },
+      { label: "Tapu Durumu", value: "Kat Mülkiyetli" },
+      { label: "Kimden", value: "Emlak Ofisinden" },
+      { label: "Takas", value: "Hayır" },
+    ],
+  },
+  {
+    id: "24",
+    type: "satilik",
+    title: "Kadıköy Pırlanta Rezidans Balkonlu Satılık 3+1 Fırsat Daire",
+    price: "15.250.000 TL",
+    location: "İstanbul / Kadıköy / Fikirtepe Mah.",
+    listingDate: "15 Mayıs 2026",
+    cardLocationShort: "İstanbul / Kadıköy",
+    cardArea: "108 m²",
+    cardRooms: "3+1",
+    photos: [
+
+       "assets/ilan-fotograflari/pirlanta/1.png",
+       "assets/ilan-fotograflari/pirlanta/2.png",
+       "assets/ilan-fotograflari/pirlanta/3.png",
+       "assets/ilan-fotograflari/pirlanta/4.png",
+       "assets/ilan-fotograflari/pirlanta/5.png",
+       "assets/ilan-fotograflari/pirlanta/6.png",
+       "assets/ilan-fotograflari/pirlanta/7.png",
+       "assets/ilan-fotograflari/pirlanta/8.png",
+       "assets/ilan-fotograflari/pirlanta/9.png",
+       "assets/ilan-fotograflari/pirlanta/10.png",
+       "assets/ilan-fotograflari/pirlanta/11.png",
+       "assets/ilan-fotograflari/pirlanta/12.png",
+       "assets/ilan-fotograflari/pirlanta/13.png",
+       "assets/ilan-fotograflari/pirlanta/14.png",
+       "assets/ilan-fotograflari/pirlanta/15.png",
+       "assets/ilan-fotograflari/pirlanta/16.png",
+       "assets/ilan-fotograflari/pirlanta/17.png",
+       "assets/ilan-fotograflari/pirlanta/18.png",
+       "assets/ilan-fotograflari/pirlanta/19.png",
+       "assets/ilan-fotograflari/pirlanta/20.png",
+       "assets/ilan-fotograflari/pirlanta/21.png",
+       "assets/ilan-fotograflari/pirlanta/22.png",
+       "assets/ilan-fotograflari/pirlanta/23.png",
+       "assets/ilan-fotograflari/pirlanta/24.png",
+
+
+    ],
+    mapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1790.7065538302634!2d29.053549538472602!3d40.99029490003335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac78d03755191%3A0x1db49312c4e4e0ff!2sDiamond%20G%C3%B6ztepe!5e0!3m2!1sen!2str!4v1778934557954!5m2!1sen!2str",
+    videoUrl: "",
+    description:
+      "Kadıköy Fikirtepe’de, Pırlanta Rezidans projesinde yer alan balkonlu satılık 3+1 fırsat daire; Marmara Üniversitesi ve Süleyman Yalçın Şehir Hastanesi girişine yakın, toplu ulaşıma kolay erişim sağlayan merkezi bir konumda bulunmaktadır. Kaliteyi arayanlara özel olarak tasarlanan dairemiz; balkon, ebeveyn banyosu ve çamaşır odası gibi ayrıcalıklı özelliklere sahiptir. Bankalar, marketler ve hastaneler yanı başında yer almaktadır. 3 bloktan oluşan projede toplam 446 konut ve 34 ticari ünite bulunmakta olup, açık ve kapalı yüzme havuzları, fitness salonu, sauna, hamam, sosyal tesisler, geniş peyzaj alanları, yürüyüş yolları, çocuk oyun alanları ve 750 araçlık kapalı otopark gibi sosyal donatılar sunulmaktadır. Kadıköy merkeze, sahile ve toplu taşımaya yakın konumuyla Pırlanta Göztepe; şehir yaşamında konfor, yatırım açısından değer ve aileler için güvenli bir yaşam sunmaktadır. Not: Dairemiz şu anda kiracılı olup tahliye süreci uzlaşma aşamasındadır. Sunumlar randevu ile yapılmaktadır. Tek Yetkili: Turyap Ataşehir İmza – Erol Erdoğar.",
+    specs: [
+      { label: "İlan No", value: "1317127111" },
+      { label: "İlan Tarihi", value: "15 Mayıs 2026" },
+      { label: "Emlak tipi", value: "Satılık daire" },
+      { label: "m² (Brüt / Net)", value: "108 / 89" },
+      { label: "Oda sayısı", value: "3+1" },
+      { label: "Bina yaşı", value: "6–10 arası" },
+      { label: "Bulunduğu kat", value: "7" },
+      { label: "Kat sayısı", value: "23" },
+      { label: "Isıtma", value: "Merkezi (Pay Ölçer)" },
+      { label: "Banyo Sayısı", value: "2" },
+      { label: "Mutfak", value: "Kapalı" },
+      { label: "Balkon", value: "Var" },
+      { label: "Asansör", value: "Var" },
+      { label: "Otopark", value: "Yok" },
+      { label: "Eşyalı", value: "Hayır" },
+      { label: "Kullanım Durumu", value: "Kiracılı" },
+      { label: "Site İçerisinde", value: "Evet" },
+      { label: "Site Adı", value: "Pırlanta Göztepe" },
+      { label: "Aidat (TL)", value: "Belirtilmemiş" },
+      { label: "Krediye Uygun", value: "Evet" },
+      { label: "Enerji Kimlik Belgesi", value: "Belirtilmemiş" },
+      { label: "Tapu Durumu", value: "Kat Mülkiyetli" },
+      { label: "Kimden", value: "Emlak Ofisinden" },
+      { label: "Takas", value: "Hayır" },
     ],
   },
 ];
